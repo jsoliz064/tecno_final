@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\ArchivoController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,4 +15,13 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::group(['prefix'=> 'archivos'], function () {
+    Route::get('index',[ArchivoController::class,'index'])->name('archivo.index');
+    Route::get('create',[ArchivoController::class,'create'])->name('archivo.create');
+    Route::post('store',[ArchivoController::class,'store'])->name('archivo.store');
+    Route::get('edit/{archivo}',[ArchivoController::class,'edit'])->name('archivo.edit');
+    Route::put('update/{archivo}',[ArchivoController::class,'update'])->name('archivo.update');
+    Route::delete('destroy/{archivo}',[ArchivoController::class,'destroy'])->name('archivo.destroy');
 });
