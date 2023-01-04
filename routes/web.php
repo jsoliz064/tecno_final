@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\ArchivoController;
 /*
 |--------------------------------------------------------------------------
@@ -25,3 +26,7 @@ Route::group(['prefix'=> 'archivos'], function () {
     Route::put('update/{archivo}',[ArchivoController::class,'update'])->name('archivo.update');
     Route::delete('destroy/{archivo}',[ArchivoController::class,'destroy'])->name('archivo.destroy');
 });
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
