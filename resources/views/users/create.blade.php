@@ -1,6 +1,6 @@
-@extends('adminlte::page')
+@extends('plantilla.app')
 
-@section('title', 'crear')
+@section('title', 'Crear Usuario')
 
 @section('content_header')
     <a class="btn btn-secundary" href="{{route('users.index')}}">Volver</a>
@@ -17,7 +17,7 @@
                         <form method="POST" action="{{ route('users.store') }}">
                             @csrf
 
-                            <div class="form-group row">
+                            <div class="form-group row my-3">
                                 <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
 
                                 <div class="col-md-6">
@@ -31,7 +31,7 @@
                                 </div>
                             </div>
 
-                            <div class="form-group row">
+                            <div class="form-group row my-3">
                                 <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
 
                                 <div class="col-md-6">
@@ -45,7 +45,7 @@
                                 </div>
                             </div>
 
-                            <div class="form-group row">
+                            <div class="form-group row my-3">
                                 <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
 
                                 <div class="col-md-6">
@@ -59,7 +59,7 @@
                                 </div>
                             </div>
 
-                            <div class="form-group row">
+                            <div class="form-group row my-3">
                                 <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
 
                                 <div class="col-md-6">
@@ -68,12 +68,11 @@
                             </div>
                             
 
-                            <div class="form-group row">
+                            <div class="form-group row my-3">
                                 <label for="roles" class="col-md-4 col-form-label text-md-right">{{ __('Seleccione Rol') }}</label>
                                 
                                 <div class="col-md-6">
                                     <select name="roles" class="form-control" id="select-roles" >
-                                        {{-- <option value=0 >Seleccione un rol</option> --}}
                                             @foreach ($roles as $rol)
                                                 <option value="{{ $rol->id }}">{{ $rol->name}}</option>
                                             @endforeach 
@@ -83,7 +82,7 @@
                             </div>
                                 
 
-                            <div class="form-group row mb-0">
+                            <div class="form-group row mb-0 my-3">
                                 <div class="col-md-6 offset-md-6"> 
                                     <button type="submit" class="btn btn-primary">
                                         {{ __('Registrar') }}

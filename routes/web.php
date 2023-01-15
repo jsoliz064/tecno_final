@@ -28,10 +28,15 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
         Route::get('profile',[UserController::class,'show2'])->name('user.show');
         Route::patch('update',[UserController::class,'update2'])->name('user.update');
 
-        Route::get('index',[UserController::class,'index'])->name('users.index');
-        Route::get('create',[UserController::class,'create'])->name('users.create');
-        Route::get('edit',[UserController::class,'edit'])->name('users.edit');
-        Route::delete('destroy/{user}',[UserController::class,'destroy'])->name('users.destroy');
+        // Route::get('index',[UserController::class,'index'])->name('users.index');
+        // Route::get('create',[UserController::class,'create'])->name('users.create');
+        // Route::post('store',[UserController::class,'store'])->name('users.store');
+        // Route::get('edit/{user}',[UserController::class,'edit'])->name('users.edit');
+        // Route::patch('update/{user}',[UserController::class,'update'])->name('users.update');
+        // Route::delete('destroy/{user}',[UserController::class,'destroy'])->name('users.destroy');
+
+        
+        Route::resource('users', UserController::class)->names('users');
 
         // Route::get('roles',[RolController::class,'index'])->name('roles.index');
         // Route::get('permisos',[RolController::class,'permisos'])->name('permisos.index');

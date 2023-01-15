@@ -72,7 +72,7 @@
         </main>
 
         <!-- ======= Footer ======= -->
-        @include('plantilla.partials.footer')
+        {{--  @include('plantilla.partials.footer')  --}}
     @endauth
 
     @yield('auth')

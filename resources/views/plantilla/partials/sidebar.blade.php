@@ -17,12 +17,14 @@
             </a>
             <ul id="components-nav" class="nav-content collapse show" data-bs-parent="#sidebar-nav">
                 
-                <li>
-                    <a href="{{route('users.index')}}">
-                        <i class="bi bi-person"></i>
-                        <span>Usuarios</span>
-                    </a>
-                </li>
+                @can('users.index')
+                    <li>
+                        <a href="{{route('users.index')}}">
+                            <i class="bi bi-person"></i>
+                            <span>Usuarios</span>
+                        </a>
+                    </li>
+                @endcan
             </ul>
         </li>
 
