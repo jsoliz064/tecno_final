@@ -29,6 +29,10 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
         Route::patch('update',[UserController::class,'update2'])->name('user.update');
 
         Route::get('index',[UserController::class,'index'])->name('users.index');
+        Route::get('create',[UserController::class,'create'])->name('users.create');
+        Route::get('edit',[UserController::class,'edit'])->name('users.edit');
+        Route::delete('destroy/{user}',[UserController::class,'destroy'])->name('users.destroy');
+
         // Route::get('roles',[RolController::class,'index'])->name('roles.index');
         // Route::get('permisos',[RolController::class,'permisos'])->name('permisos.index');
     });
