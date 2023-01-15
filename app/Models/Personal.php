@@ -9,8 +9,6 @@ class Personal extends Model
 {
     use HasFactory;
 
-    protected $table="p1_personal";
-    protected $primaryKey = 'id';
-    public $timestamps = false;
+    protected $table="p2_personal";
     protected $guarded=['id'];
 }

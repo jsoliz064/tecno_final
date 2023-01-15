@@ -9,8 +9,6 @@ class EvaluacionDesempeno extends Model
 {
     use HasFactory;
 
-    protected $table="p1_evalucacion_desempeño";
-    protected $primaryKey = 'id';
-    public $timestamps = false;
+    protected $table="p2_evalucacion_desempeno";
     protected $guarded=['id'];
 }

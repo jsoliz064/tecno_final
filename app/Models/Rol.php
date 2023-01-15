@@ -9,8 +9,6 @@ class Rol extends Model
 {
     use HasFactory;
 
-    protected $table="p1_roles";
-    protected $primaryKey = 'id';
-    public $timestamps = false;
+    protected $table="p2_roles";
     protected $guarded=['id'];
 }

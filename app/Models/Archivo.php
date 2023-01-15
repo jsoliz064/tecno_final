@@ -9,9 +9,7 @@ class Archivo extends Model
 {
     use HasFactory;
 
-    protected $table="p1_archivos";
-    protected $primaryKey = 'id';
-    public $timestamps = false;
+    protected $table="p2_archivos";
     protected $guarded=['id'];
 
     public function Personal(){

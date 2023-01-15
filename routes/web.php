@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\ArchivoController;
+use App\Http\Controllers\UserController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,6 +23,15 @@ Route::get('/plantilla', function () {
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+    Route::group(['prefix'=> 'usuarios'], function () {
+        Route::get('profile',[UserController::class,'show2'])->name('user.show');
+        Route::patch('update',[UserController::class,'update2'])->name('user.update');
+
+        Route::get('index',[UserController::class,'index'])->name('users.index');
+        // Route::get('roles',[RolController::class,'index'])->name('roles.index');
+        // Route::get('permisos',[RolController::class,'permisos'])->name('permisos.index');
+    });
 
     Route::group(['prefix'=> 'archivos'], function () {
         Route::get('index',[ArchivoController::class,'index'])->name('archivo.index');
