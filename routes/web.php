@@ -15,7 +15,10 @@ use App\Http\Controllers\ArchivoController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('plantilla.app');
+});
+Route::get('/home', function () {
+    return view('home');
 });
 
 Route::group(['prefix'=> 'archivos'], function () {
