@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>FICH</title>
+    <title>@yield('title', 'FICH')</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
 
@@ -30,6 +30,7 @@
 
     <!-- Template Main CSS File -->
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+    @yield('css')
 </head>
 
 <body>
@@ -64,12 +65,12 @@
 
         <div class="pagetitle">
 
-            {{--  <h1>Dashboard</h1>  --}}
+            @yield('content_header')
 
         </div>
 
         <section class="section dashboard">
-
+            @yield('content')
         </section>
 
     </main>
@@ -91,6 +92,7 @@
     <script src="{{ asset('vendor/php-email-form/validate.js') }}"></script>
     <!-- Template Main JS File -->
     <script src="{{ asset('js/main.js') }}"></script>
+    @yield('js')
 </body>
 
 </html>

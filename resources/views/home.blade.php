@@ -1,4 +1,10 @@
-@extends('layouts.app')
+@extends('plantilla.app')
+
+@section('title', 'Home')
+
+@section('content_header')
+    <h1>Home</h1>
+@stop
 
 @section('content')
 <div class="container">
@@ -21,3 +27,11 @@
     </div>
 </div>
 @endsection
+
+@section('css')
+
+@stop
+
+@section('js')
+
+@stop
