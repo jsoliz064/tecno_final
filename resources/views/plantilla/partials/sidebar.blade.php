@@ -31,6 +31,12 @@
                 <span>Profile</span>
             </a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="users-profile.html">
+                <i class="bi bi-person"></i>
+                <span>Malena</span>
+            </a>
+        </li>
 
     </ul>
 </aside>

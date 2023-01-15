@@ -34,53 +34,51 @@
 </head>
 
 <body>
+    @auth
+        <!-- ======= Header ======= -->
+        <header id="header" class="header fixed-top d-flex align-items-center">
 
-    <!-- ======= Header ======= -->
-    <header id="header" class="header fixed-top d-flex align-items-center">
+            <div class="d-flex align-items-center justify-content-between">
+                <a href="index.html" class="logo d-flex align-items-center">
+                    <img src="{{ asset('img/logo.png') }}" alt="">
+                    <span class="d-none d-lg-block">Camiri</span>
+                </a>
+                <i class="bi bi-list toggle-sidebar-btn"></i>
+            </div><!-- End Logo -->
 
-        <div class="d-flex align-items-center justify-content-between">
-            <a href="index.html" class="logo d-flex align-items-center">
-                <img src="{{ asset('img/logo.png') }}" alt="">
-                <span class="d-none d-lg-block">Camiri</span>
-            </a>
-            <i class="bi bi-list toggle-sidebar-btn"></i>
-        </div><!-- End Logo -->
+            <div class="search-bar">
+                <form class="search-form d-flex align-items-center" method="POST" action="#">
+                    <input type="text" name="query" placeholder="Search" title="Enter search keyword">
+                    <button type="submit" title="Search"><i class="bi bi-search"></i></button>
+                </form>
+            </div><!-- End Search Bar -->
 
-        <div class="search-bar">
-            <form class="search-form d-flex align-items-center" method="POST" action="#">
-                <input type="text" name="query" placeholder="Search" title="Enter search keyword">
-                <button type="submit" title="Search"><i class="bi bi-search"></i></button>
-            </form>
-        </div><!-- End Search Bar -->
+            <!-- ======= nav ======= -->
+            @include('plantilla.partials.nav')
+        </header>
 
-        <!-- ======= nav ======= -->
-        @include('plantilla.partials.nav')
-    </header>
+        <!-- ======= Sidebar ======= -->
+        @include('plantilla.partials.sidebar')
 
-    <!-- ======= Sidebar ======= -->
-    @include('plantilla.partials.sidebar')
+        <main id="main" class="main">
+            <div class="pagetitle">
+                @yield('content_header')
+            </div>
 
+            <section class="section dashboard">
+                @yield('content')
+            </section>
 
-    <main id="main" class="main">
+        </main>
 
-        <div class="pagetitle">
+        <!-- ======= Footer ======= -->
+        @include('plantilla.partials.footer')
+    @endauth
 
-            @yield('content_header')
-
-        </div>
-
-        <section class="section dashboard">
-            @yield('content')
-        </section>
-
-    </main>
-
-    <!-- ======= Footer ======= -->
-    @include('plantilla.partials.footer')
+    @yield('auth')
 
     <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
             class="bi bi-arrow-up-short"></i></a>
-
     <!-- Vendor JS Files -->
     <script src="{{ asset('vendor/apexcharts/apexcharts.min.js') }}"></script>
     <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
