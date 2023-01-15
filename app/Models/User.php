@@ -44,7 +44,10 @@ class User extends Authenticatable
     ];
 
     public function rol_name() {
-        return $this->getRoleNames()[0];
+        if (sizeof($this->getRoleNames())>0){
+            return $this->getRoleNames()[0];
+        }
+        return "SIN ROL";
     }
     
     public function rol_id() {
