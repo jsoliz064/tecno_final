@@ -95,9 +95,16 @@
 
     <script>
         document.getElementById('dark-mode-button').addEventListener('click', changeStylesheet);
+        let bool=true;
         function changeStylesheet(stylesheetName) {
         var stylesheet = document.getElementById("stylesheet");
+        if (bool){
         stylesheet.href = "{{ asset('css/styleBlack.css') }}";
+        bool=false;
+        }else{
+            stylesheet.href = "{{ asset('css/style.css') }}";
+          bool=true;
+        }
         }
     </script>
 </body>

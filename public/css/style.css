@@ -27,7 +27,19 @@ a:hover {
   color: #717ff5;
   text-decoration: none;
 }
+/*override boostrap*/
+.table {
+  width: 100%;
+  margin-bottom: 1rem;
+  color: #444444;
+  vertical-align: top;
+  border-color: #f6f9ff;
+}
+tbody .odd {
+  background-color: #ecececc5;
+}
 
+/*end*/
 h1,
 h2,
 h3,

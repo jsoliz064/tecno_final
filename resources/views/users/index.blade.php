@@ -23,7 +23,7 @@
     <div class="card">
         <div class="card-body">
           <div class="table-responsive">
-          <table class="table table-striped" id="usuarios" >
+          <table class="table" id="usuarios" >
         
             <thead>
         
