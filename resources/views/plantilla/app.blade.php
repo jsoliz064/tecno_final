@@ -31,9 +31,14 @@
     <link href="{{ asset('vendor/simple-datatables/style.css') }}" rel="stylesheet">
 
     <!-- Template Main CSS File -->
+<<<<<<< HEAD
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
     <!-- custom css file link  -->
 
+=======
+    {{-- <link href="{{ asset('css/styleBlack.css') }}" rel="stylesheet" id="dark"> --}}
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet" id="stylesheet" type="text/css">
+>>>>>>> b62051bc3e5de72c3a2daea5be4b431af54a4e1e
     @yield('css')
 </head>
 
@@ -122,6 +127,21 @@
     <!-- Template Main JS File -->
     <script src="{{ asset('js/main.js') }}"></script>
     @yield('js')
+
+    <script>
+        document.getElementById('dark-mode-button').addEventListener('click', changeStylesheet);
+        let bool=true;
+        function changeStylesheet(stylesheetName) {
+        var stylesheet = document.getElementById("stylesheet");
+        if (bool){
+        stylesheet.href = "{{ asset('css/styleBlack.css') }}";
+        bool=false;
+        }else{
+            stylesheet.href = "{{ asset('css/style.css') }}";
+          bool=true;
+        }
+        }
+    </script>
 </body>
 
 </html>

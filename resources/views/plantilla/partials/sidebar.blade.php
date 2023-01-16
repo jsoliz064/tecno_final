@@ -82,6 +82,7 @@
 
 
     </ul>
+<<<<<<< HEAD
     <div class="themes-container">
 
 
@@ -108,4 +109,8 @@
 
 </div>
 
+=======
+
+    <button id="dark-mode-button" ><i class="fa-solid fa-moon"></i></button>
+>>>>>>> b62051bc3e5de72c3a2daea5be4b431af54a4e1e
 </aside>
