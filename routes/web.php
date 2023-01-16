@@ -37,20 +37,18 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
         // Route::get('edit/{user}',[UserController::class,'edit'])->name('users.edit');
         // Route::patch('update/{user}',[UserController::class,'update'])->name('users.update');
         // Route::delete('destroy/{user}',[UserController::class,'destroy'])->name('users.destroy');
-
-        
         Route::resource('users', UserController::class)->names('users');
         Route::resource('roles', RoleController::class)->names('roles');
-        Route::resource('personal', PersonalController::class)->names('personal');
-
     });
 
+    Route::resource('personal', PersonalController::class)->names('personal');
+
     Route::group(['prefix'=> 'archivos'], function () {
-        Route::get('index',[ArchivoController::class,'index'])->name('archivo.index');
-        Route::get('create',[ArchivoController::class,'create'])->name('archivo.create');
-        Route::post('store',[ArchivoController::class,'store'])->name('archivo.store');
-        Route::get('edit/{archivo}',[ArchivoController::class,'edit'])->name('archivo.edit');
-        Route::put('update/{archivo}',[ArchivoController::class,'update'])->name('archivo.update');
-        Route::delete('destroy/{archivo}',[ArchivoController::class,'destroy'])->name('archivo.destroy');
+        Route::get('index',[ArchivoController::class,'index'])->name('archivos.index');
+        Route::get('create',[ArchivoController::class,'create'])->name('archivos.create');
+        Route::post('store',[ArchivoController::class,'store'])->name('archivos.store');
+        Route::get('edit/{archivo}',[ArchivoController::class,'edit'])->name('archivos.edit');
+        Route::put('update/{archivo}',[ArchivoController::class,'update'])->name('archivos.update');
+        Route::delete('destroy/{archivo}',[ArchivoController::class,'destroy'])->name('archivos.destroy');
     });
 });
