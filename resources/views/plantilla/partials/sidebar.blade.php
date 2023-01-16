@@ -52,7 +52,7 @@
                 @endcan
                 @can('archivos.index')
                     <li>
-                        <a href="{{route('roles.index')}}">
+                        <a href="{{route('archivos.index')}}">
                             <i class="bi bi-person"></i>
                             <span>Archivos</span>
                         </a>
