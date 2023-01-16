@@ -29,7 +29,8 @@
     <link href="{{ asset('vendor/simple-datatables/style.css') }}" rel="stylesheet">
 
     <!-- Template Main CSS File -->
-    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+    {{-- <link href="{{ asset('css/styleBlack.css') }}" rel="stylesheet" id="dark"> --}}
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet" id="stylesheet" type="text/css">
     @yield('css')
 </head>
 
@@ -91,6 +92,14 @@
     <!-- Template Main JS File -->
     <script src="{{ asset('js/main.js') }}"></script>
     @yield('js')
+
+    <script>
+        document.getElementById('dark-mode-button').addEventListener('click', changeStylesheet);
+        function changeStylesheet(stylesheetName) {
+        var stylesheet = document.getElementById("stylesheet");
+        stylesheet.href = "{{ asset('css/styleBlack.css') }}";
+        }
+    </script>
 </body>
 
 </html>
