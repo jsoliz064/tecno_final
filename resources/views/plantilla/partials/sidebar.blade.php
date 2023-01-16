@@ -82,32 +82,6 @@
 
 
     </ul>
-    <div class="themes-container">
-
-
-    <h3>switch theme</h3>
-
-    <div class="theme-toggler">
-        <span>light</span>
-        <span class="toggler"></span>
-        <span>dart</span>
-    </div>
-
-    <h3>pick a color</h3>
-
-    <div class="theme-colors">
-        <div class="color" style="background:#2980b9"></div>
-        <div class="color" style="background:#27ae60;"></div>
-        <div class="color" style="background:#ffa502;"></div>
-        <div class="color" style="background:#8e44ad;"></div>
-        <div class="color" style="background:#0fb9b1;"></div>
-        <div class="color" style="background:#ffd32a;"></div>
-        <div class="color" style="background:#ff0033;"></div>
-        <div class="color" style="background:#e84393;"></div>
-    </div>
-
-</div>
-
 
     <button id="dark-mode-button" ><i class="fa-solid fa-moon"></i></button>
 </aside>
