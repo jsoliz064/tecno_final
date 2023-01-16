@@ -9,14 +9,14 @@
             </a>
         </li>
 
-        
+
 
         <li class="nav-item">
             <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
                 <i class="bi bi-menu-button-wide"></i><span>Administrar</span><i class="bi bi-chevron-down ms-auto"></i>
             </a>
             <ul id="components-nav" class="nav-content collapse show" data-bs-parent="#sidebar-nav">
-                
+
                 @can('users.index')
                     <li>
                         <a href="{{route('users.index')}}">
@@ -41,7 +41,7 @@
                 <i class="bi bi-menu-button-wide"></i><span>Gestionar</span><i class="bi bi-chevron-down ms-auto"></i>
             </a>
             <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-                
+
                 @can('personal.index')
                     <li>
                         <a href="{{route('personal.index')}}">
@@ -82,7 +82,6 @@
 
 
     </ul>
-<<<<<<< HEAD
     <div class="themes-container">
 
 
@@ -109,8 +108,6 @@
 
 </div>
 
-=======
 
     <button id="dark-mode-button" ><i class="fa-solid fa-moon"></i></button>
->>>>>>> b62051bc3e5de72c3a2daea5be4b431af54a4e1e
 </aside>
