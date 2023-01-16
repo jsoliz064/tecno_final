@@ -4,6 +4,48 @@
 * Author: BootstrapMade.com
 * License: https://bootstrapmade.com/license/
 */
+let themeToggler = document.querySelector('.theme-toggler');
+
+themeToggler.onclick = () => {
+
+    themeToggler.classList.toggle('active');
+
+    if (themeToggler.classList.contains('active')) {
+        document.body.classList.add('active');
+    } else {
+        document.body.classList.remove('active');
+    }
+
+}
+
+var currentTime = new Date().getHours();
+if (document.body) {
+    if (6 <= currentTime && currentTime < 19) { //if es DIA
+        document.body.classList.remove('active');
+    } else { //ELSE es NOCHE
+        document.body.classList.add('active');
+    }
+}
+
+document.querySelectorAll('.theme-colors .color').forEach(color => {
+    color.onclick = () => {
+        let background = color.style.background;
+        document.querySelector(':root').style.setProperty('--main-color', background);
+    }
+});
+
+let theme = document.querySelector('.themes-container');
+
+document.querySelector('#theme-open').onclick = () => {
+    theme.classList.add('active');
+    document.body.style.paddingRight = '350px';
+}
+
+document.querySelector('#theme-close').onclick = () => {
+    theme.classList.remove('active');
+    document.body.style.paddingRight = '0px';
+}
+
 (function() {
   "use strict";
 
@@ -31,7 +73,7 @@
   }
 
   /**
-   * Easy on scroll event listener 
+   * Easy on scroll event listener
    */
   const onscroll = (el, listener) => {
     el.addEventListener('scroll', listener)
