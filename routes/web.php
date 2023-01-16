@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\ArchivoController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\RoleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,6 +38,8 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 
         
         Route::resource('users', UserController::class)->names('users');
+        Route::resource('roles', RoleController::class)->names('roles');
+
 
         // Route::get('roles',[RolController::class,'index'])->name('roles.index');
         // Route::get('permisos',[RolController::class,'permisos'])->name('permisos.index');
