@@ -44,9 +44,9 @@
                 
                 @can('personal.index')
                     <li>
-                        <a href="{{route('users.index')}}">
+                        <a href="{{route('personal.index')}}">
                             <i class="bi bi-person"></i>
-                            <span>Empleados</span>
+                            <span>Personal</span>
                         </a>
                     </li>
                 @endcan

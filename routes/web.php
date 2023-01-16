@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\ArchivoController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\PersonalController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -39,10 +41,8 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
         
         Route::resource('users', UserController::class)->names('users');
         Route::resource('roles', RoleController::class)->names('roles');
+        Route::resource('personal', PersonalController::class)->names('personal');
 
-
-        // Route::get('roles',[RolController::class,'index'])->name('roles.index');
-        // Route::get('permisos',[RolController::class,'permisos'])->name('permisos.index');
     });
 
     Route::group(['prefix'=> 'archivos'], function () {

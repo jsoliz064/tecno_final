@@ -34,6 +34,12 @@ class UserController extends Controller
 
     public function store(Request $request)
     {
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required|email',
+            'password' => 'required|string|min:4',
+            'roles' => 'required',
+        ]);
         $users=User::create([
             'name' => $request['name'],
             'email' => $request['email'],
@@ -67,6 +73,9 @@ class UserController extends Controller
             $user->name = $request->name;
         }
         if($user->email <> $request->email){
+            $request->validate([
+                'email'=>'required|string|max:255|email|unique:users',
+            ]);
             $user->email = $request->email;
         }
         if($request->password <> ''){
@@ -92,8 +101,12 @@ class UserController extends Controller
         if($request->password <> ''){
             $user->password = bcrypt($request->password);
         }
-        if($user->email <> $request->email)
+        if($user->email <> $request->email){
+            $request->validate([
+                'email'=>'required|string|max:255|email|unique:users',
+            ]);
             $user->email = $request->email;
+        }
         if($request->roles > 0 ){
             $user->roles()->sync($request->roles);
         }           

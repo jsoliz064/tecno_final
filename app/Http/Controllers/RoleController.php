@@ -39,6 +39,10 @@ class RoleController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'name' => 'required',
+        ]);
+
         $role = Role::create([
             'name' => $request->name,
             'guard_name' => 'web',
@@ -82,6 +86,10 @@ class RoleController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'name' => 'required',
+        ]);
+        
         $role = Role::findOrFail($id);
         $role->update([
             'name' => $request->name,
