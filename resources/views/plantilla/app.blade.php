@@ -8,6 +8,8 @@
     <title>@yield('title', 'FICH')</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
+    <!-- font awesome cdn link  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
     <!-- Favicons -->
     <link href="{{ asset('img/favicon.png') }}')}}" rel="icon">
@@ -30,10 +32,13 @@
 
     <!-- Template Main CSS File -->
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+    <!-- custom css file link  -->
+
     @yield('css')
 </head>
 
 <body>
+
 
     <!-- ======= Header ======= -->
     <header id="header" class="header fixed-top d-flex align-items-center">
@@ -46,12 +51,14 @@
             <i class="bi bi-list toggle-sidebar-btn"></i>
         </div><!-- End Logo -->
 
+
         <div class="search-bar">
             <form class="search-form d-flex align-items-center" method="POST" action="#">
                 <input type="text" name="query" placeholder="Search" title="Enter search keyword">
                 <button type="submit" title="Search"><i class="bi bi-search"></i></button>
             </form>
         </div><!-- End Search Bar -->
+
 
         <!-- ======= nav ======= -->
         @include('plantilla.partials.nav')
@@ -70,7 +77,35 @@
         </div>
 
         <section class="section dashboard">
+
             @yield('content')
+
+
+<div class="themes-container">
+
+
+    <h3>switch theme</h3>
+
+    <div class="theme-toggler">
+        <span>light</span>
+        <span class="toggler"></span>
+        <span>dart</span>
+    </div>
+
+    <h3>pick a color</h3>
+
+    <div class="theme-colors">
+        <div class="color" style="background:#2980b9"></div>
+        <div class="color" style="background:#27ae60;"></div>
+        <div class="color" style="background:#ffa502;"></div>
+        <div class="color" style="background:#8e44ad;"></div>
+        <div class="color" style="background:#0fb9b1;"></div>
+        <div class="color" style="background:#ffd32a;"></div>
+        <div class="color" style="background:#ff0033;"></div>
+        <div class="color" style="background:#e84393;"></div>
+    </div>
+
+</div>
         </section>
 
     </main>
