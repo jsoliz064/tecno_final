@@ -6,6 +6,8 @@ use App\Http\Controllers\ArchivoController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\PersonalController;
+use App\Http\Controllers\CertificadoController;
+
 
 
 /*
@@ -50,5 +52,8 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
         Route::get('edit/{archivo}',[ArchivoController::class,'edit'])->name('archivos.edit');
         Route::put('update/{archivo}',[ArchivoController::class,'update'])->name('archivos.update');
         Route::delete('destroy/{archivo}',[ArchivoController::class,'destroy'])->name('archivos.destroy');
+    });
+    Route::group(['prefix'=> 'certificados'], function () {
+        Route::get('index',[CertificadoController::class,'index'])->name('certificados.index');
     });
 });

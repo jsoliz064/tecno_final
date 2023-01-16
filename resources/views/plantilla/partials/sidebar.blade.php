@@ -58,6 +58,14 @@
                         </a>
                     </li>
                 @endcan
+                @can('certificados.index')
+                    <li>
+                        <a href="{{route('certificados.index')}}">
+                            <i class="bi bi-person"></i>
+                            <span>Emitir Certificados</span>
+                        </a>
+                    </li>
+                @endcan
             </ul>
         </li>
 
