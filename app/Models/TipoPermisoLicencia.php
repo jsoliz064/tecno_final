@@ -9,8 +9,6 @@ class TipoPermisoLicencia extends Model
 {
     use HasFactory;
 
-    protected $table="p1_tipo_permiso_licencia";
-    protected $primaryKey = 'id';
-    public $timestamps = false;
+    protected $table="p2_tipo_permisos_licencias";
     protected $guarded=['id'];
 }

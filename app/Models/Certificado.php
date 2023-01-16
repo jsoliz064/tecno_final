@@ -9,8 +9,6 @@ class Certificado extends Model
 {
     use HasFactory;
 
-    protected $table="p1_certificados";
-    protected $primaryKey = 'id';
-    public $timestamps = false;
+    protected $table="p2_certificados";
     protected $guarded=['id'];
 }

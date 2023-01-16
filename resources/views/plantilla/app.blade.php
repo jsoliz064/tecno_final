@@ -11,9 +11,9 @@
     <!-- font awesome cdn link  -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
-    <!-- Favicons -->
-    <link href="{{ asset('img/favicon.png') }}')}}" rel="icon">
-    <link href="{{ asset('img/apple-touch-icon.png') }}')}}" rel="apple-touch-icon">
+    <!-- Favicons
+    <link href="{{ asset('img/favicon.png') }}" rel="icon">
+    <link href="{{ asset('img/apple-touch-icon.png') }}" rel="apple-touch-icon">-->
 
     <!-- Google Fonts -->
     <link href="https://fonts.gstatic.com" rel="preconnect">
@@ -38,84 +38,51 @@
 </head>
 
 <body>
+    @auth
+        <!-- ======= Header ======= -->
+        <header id="header" class="header fixed-top d-flex align-items-center">
 
+            <div class="d-flex align-items-center justify-content-between">
+                <a href="index.html" class="logo d-flex align-items-center">
+                    <img src="{{ asset('img/logo.png') }}" alt="">
+                    <span class="d-none d-lg-block">Camiri</span>
+                </a>
+                <i class="bi bi-list toggle-sidebar-btn"></i>
+            </div><!-- End Logo -->
 
-    <!-- ======= Header ======= -->
-    <header id="header" class="header fixed-top d-flex align-items-center">
+            <div class="search-bar">
+                <form class="search-form d-flex align-items-center" method="POST" action="#">
+                    <input type="text" name="query" placeholder="Search" title="Enter search keyword">
+                    <button type="submit" title="Search"><i class="bi bi-search"></i></button>
+                </form>
+            </div><!-- End Search Bar -->
 
-        <div class="d-flex align-items-center justify-content-between">
-            <a href="index.html" class="logo d-flex align-items-center">
-                <img src="{{ asset('img/logo.png') }}" alt="">
-                <span class="d-none d-lg-block">Camiri</span>
-            </a>
-            <i class="bi bi-list toggle-sidebar-btn"></i>
-        </div><!-- End Logo -->
+            <!-- ======= nav ======= -->
+            @include('plantilla.partials.nav')
+        </header>
 
+        <!-- ======= Sidebar ======= -->
+        @include('plantilla.partials.sidebar')
 
-        <div class="search-bar">
-            <form class="search-form d-flex align-items-center" method="POST" action="#">
-                <input type="text" name="query" placeholder="Search" title="Enter search keyword">
-                <button type="submit" title="Search"><i class="bi bi-search"></i></button>
-            </form>
-        </div><!-- End Search Bar -->
+        <main id="main" class="main">
+            <div class="pagetitle">
+                @yield('content_header')
+            </div>
 
+            <section class="section dashboard">
+                @yield('content')
+            </section>
 
-        <!-- ======= nav ======= -->
-        @include('plantilla.partials.nav')
-    </header>
+        </main>
 
-    <!-- ======= Sidebar ======= -->
-    @include('plantilla.partials.sidebar')
+        <!-- ======= Footer ======= -->
+        {{--  @include('plantilla.partials.footer')  --}}
+    @endauth
 
-
-    <main id="main" class="main">
-
-        <div class="pagetitle">
-
-            @yield('content_header')
-
-        </div>
-
-        <section class="section dashboard">
-
-            @yield('content')
-
-
-<div class="themes-container">
-
-
-    <h3>switch theme</h3>
-
-    <div class="theme-toggler">
-        <span>light</span>
-        <span class="toggler"></span>
-        <span>dart</span>
-    </div>
-
-    <h3>pick a color</h3>
-
-    <div class="theme-colors">
-        <div class="color" style="background:#2980b9"></div>
-        <div class="color" style="background:#27ae60;"></div>
-        <div class="color" style="background:#ffa502;"></div>
-        <div class="color" style="background:#8e44ad;"></div>
-        <div class="color" style="background:#0fb9b1;"></div>
-        <div class="color" style="background:#ffd32a;"></div>
-        <div class="color" style="background:#ff0033;"></div>
-        <div class="color" style="background:#e84393;"></div>
-    </div>
-
-</div>
-        </section>
-
-    </main>
-
-    <!-- ======= Footer ======= -->
-    @include('plantilla.partials.footer')
+    @yield('auth')
 
     <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
             class="bi bi-arrow-up-short"></i></a>
-
     <!-- Vendor JS Files -->
     <script src="{{ asset('vendor/apexcharts/apexcharts.min.js') }}"></script>
     <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>

@@ -9,8 +9,6 @@ class Contrato extends Model
 {
     use HasFactory;
 
-    protected $table="p1_contratos";
-    protected $primaryKey = 'id';
-    public $timestamps = false;
+    protected $table="p2_contratos";
     protected $guarded=['id'];
 }

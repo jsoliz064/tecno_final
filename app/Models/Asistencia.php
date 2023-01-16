@@ -9,8 +9,7 @@ class Asistencia extends Model
 {
     use HasFactory;
 
-    protected $table="p1_asistencias";
-    protected $primaryKey = 'id';
-    public $timestamps = false;
+    protected $table="p2_asistencias";
+    
     protected $guarded=['id'];
 }

@@ -9,8 +9,6 @@ class Horario extends Model
 {
     use HasFactory;
 
-    protected $table="p1_horarios";
-    protected $primaryKey = 'id';
-    public $timestamps = false;
+    protected $table="p2_horarios";
     protected $guarded=['id'];
 }

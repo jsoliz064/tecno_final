@@ -9,8 +9,6 @@ class Vacaciones extends Model
 {
     use HasFactory;
 
-    protected $table="p1_vacaciones";
-    protected $primaryKey = 'id';
-    public $timestamps = false;
+    protected $table="p2_vacaciones";
     protected $guarded=['id'];
 }
