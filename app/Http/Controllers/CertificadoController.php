@@ -43,7 +43,7 @@ class CertificadoController extends Controller
 
         $dir = "qr/";
         $image = $result->getString();
-        $imageName = "qr" . "-" . $codigo . ".png";
+        $imageName = "codigoqr" . $codigo . ".png";
         Storage::disk('public')->put($dir . $imageName, $image);
         $url = "/storage/" . $dir . $imageName;
 
