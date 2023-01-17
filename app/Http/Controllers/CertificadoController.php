@@ -80,7 +80,7 @@ class CertificadoController extends Controller
         $imagenBase64 = "";
         //if (Storage::exists($ruta)) {
             //dd("ga");
-            $imagenBase64 = "data:image/png;base64," . base64_encode(file_get_contents("../../../public".$ruta));
+            $imagenBase64 = "data:image/png;base64," . base64_encode(file_get_contents("http://supportficct.com/tecno_final/public".$ruta));
         //}
         $qr = $imagenBase64;
         return view('certificados.show', compact('certificado', 'qr'));
