@@ -64,23 +64,21 @@ class CertificadoController extends Controller
             $qr = "";
             return view('certificados.show', compact('certificado', 'qr'));
         }
-        $ruta = "../public" . $certificado->qr_path;
+        $ruta = "https://www.tecnoweb.org.bo/inf513/grupo06sa/p2_1/tecnofinal/public" . $certificado->qr_path;
         $imagenBase64 = "";
-        if (file_exists($ruta)) {
+        //if (file_exists($ruta)) {
             $imagenBase64 = "data:image/png;base64," . base64_encode(file_get_contents($ruta));
-        }
+        //}
 
         $qr = $imagenBase64;
         return view('certificados.show', compact('certificado', 'qr'));
     }
     public function show(Certificado $certificado)
     {
-        $ruta =$certificado->qr_path;
-        //$ruta=substr($ruta,9,strlen($ruta));
+        $ruta = "https://www.tecnoweb.org.bo/inf513/grupo06sa/p2_1/tecnofinal/public" . $certificado->qr_path;
         $imagenBase64 = "";
-        //if (Storage::exists($ruta)) {
-            //dd("ga");
-            $imagenBase64 = "data:image/png;base64," . base64_encode(file_get_contents("http://supportficct.com/tecno_final/public".$ruta));
+        //if (file_exists($ruta)) {
+            $imagenBase64 = "data:image/png;base64," . base64_encode(file_get_contents($ruta));
         //}
         $qr = $imagenBase64;
         return view('certificados.show', compact('certificado', 'qr'));
@@ -88,11 +86,11 @@ class CertificadoController extends Controller
 
     public function download(Certificado $certificado)
     {
-        $ruta = $certificado->qr_path;
+        $ruta = "https://www.tecnoweb.org.bo/inf513/grupo06sa/p2_1/tecnofinal/public" . $certificado->qr_path;
         $imagenBase64 = "";
-        if (Storage::exists($ruta)) {
+        //if (file_exists($ruta)) {
             $imagenBase64 = "data:image/png;base64," . base64_encode(file_get_contents($ruta));
-        }
+        //}
         $qr = $imagenBase64;
         $pdf = Pdf::loadView('certificado', compact('certificado', 'qr'));
         return $pdf->download('certificado.pdf');

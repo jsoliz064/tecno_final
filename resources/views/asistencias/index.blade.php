@@ -62,10 +62,7 @@
     <script>
 
         async function marcar(id) {
-            @php $dominio=env('SERVER_NAME') @endphp
-            const dominio='{{$dominio}}';
-            console.log(dominio)
-            fetch('http://supportficct.com/tecno_final/asistencias/marcar/' + id, {
+            fetch('https://www.tecnoweb.org.bo/inf513/grupo06sa/p2_1/tecnofinal/asistencias/marcar/' + id, {
                     method: 'GET',
                 })
                 .then(response => response.json())
