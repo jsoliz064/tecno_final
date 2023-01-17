@@ -65,7 +65,7 @@
             @php $dominio=env('SERVER_NAME') @endphp
             const dominio='{{$dominio}}';
             console.log(dominio)
-            fetch(dominio+'/asistencias/marcar/' + id, {
+            fetch('http://supportficct.com/tecno_final/asistencias/marcar/' + id, {
                     method: 'GET',
                 })
                 .then(response => response.json())
