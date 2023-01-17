@@ -76,6 +76,7 @@ class CertificadoController extends Controller
     public function show(Certificado $certificado)
     {
         $ruta = $certificado->qr_path;
+        $ruta=substr($ruta,8,strlen($ruta));
         $imagenBase64 = "";
         if (Storage::exists($ruta)) {
             dd("ga");
