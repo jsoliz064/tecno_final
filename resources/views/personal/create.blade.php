@@ -19,11 +19,22 @@
                                 <label for="nombre">Nombre</label>
                                 <input type="text" name="nombre" id="nombre" class="form-control"
                                     value="{{ old('nombre') }}">
+                                    @error('personal')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+
                             </div>
                             <div class="form-group">
                                 <label for="apellido">Apellido</label>
                                 <input type="text" name="apellido" id="apellido" class="form-control"
                                     value="{{ old('apellido') }}">
+                                    @error('apellido')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                             </div>
                             <div class="form-group">
                                 <label for="ci">Carnet de Identidad</label>
@@ -43,11 +54,21 @@
                                 <label for="fecha_nacimiento">Fecha de Nacimiento</label>
                                 <input type="date" name="fecha_nacimiento" id="fecha_nacimiento" class="form-control"
                                     value="{{ old('fecha_nacimiento') }}">
+                                    @error('fecha_nacimiento')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                             </div>
                             <div class="form-group">
                                 <label for="correo">Correo</label>
                                 <input type="email"name="correo" id="correo" class="form-control"
                                     value="{{ old('correo') }}">
+                                    @error('password')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                             </div>
                             <div class="form-group">
                                 <label for="telefono">Telefono</label>
@@ -76,7 +97,7 @@
                                     @endforeach
                                 </select>
                             </div>
-                            
+
                             <div class="form-group">
                                 <label for="tipo_personal_id">Tipo de Personal</label>
                                 <select name="tipo_personal_id" id="tipo_personal_id" class="form-control">
