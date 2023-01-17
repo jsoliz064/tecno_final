@@ -43,7 +43,7 @@ class CertificadoController extends Controller
 
         $dir = "qr/";
         $image = $result->getString();
-        $imageName = "qr" . "-" . $codigo . ".png";
+        $imageName = "codigoqr" . $codigo . ".png";
         Storage::disk('public')->put($dir . $imageName, $image);
         $url = "/storage/" . $dir . $imageName;
 
@@ -75,13 +75,13 @@ class CertificadoController extends Controller
     }
     public function show(Certificado $certificado)
     {
-        $ruta = $certificado->qr_path;
-        $ruta=substr($ruta,8,strlen($ruta));
+        $ruta =$certificado->qr_path;
+        //$ruta=substr($ruta,9,strlen($ruta));
         $imagenBase64 = "";
-        if (Storage::exists($ruta)) {
-            dd("ga");
-            $imagenBase64 = "data:image/png;base64," . base64_encode(file_get_contents($ruta));
-        }
+        //if (Storage::exists($ruta)) {
+            //dd("ga");
+            $imagenBase64 = "data:image/png;base64," . base64_encode(file_get_contents("http://supportficct.com/tecno_final/public".$ruta));
+        //}
         $qr = $imagenBase64;
         return view('certificados.show', compact('certificado', 'qr'));
     }
