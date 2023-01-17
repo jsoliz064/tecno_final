@@ -90,10 +90,14 @@
         {{-- <a id="dark-mode" class="nav-link collapsed">
              <i class="fa-solid fa-moon-over-sun"></i> </a> --}}
         
-        <button id="adulto-mode" > Adulto </i></button> 
-        <button id="joven-mode" >Joven</i></button> 
-        <button id="nino-mode" >Niño</i></button> 
-        <button id="dark-mode" ><i class="bi bi-moon"></i></button> 
+    <li class="nav-heading">
+        <button id="adulto-mode" > Adulto</button> 
+        <button id="joven-mode" >Joven</button> 
+        <button id="nino-mode" >Niño</button> 
+        <button id="normal-mode" >Normal</button> 
+        <button id="dark-mode" ><i class="bi bi-moon"> </i></button> 
+        
+    </li>
     </ul>
     
 </aside>
