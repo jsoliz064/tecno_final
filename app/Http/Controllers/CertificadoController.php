@@ -33,7 +33,7 @@ class CertificadoController extends Controller
 
         //Libreria: https://github.com/endroid/qr-code
         $codigo=uniqid();
-        $link=env('SERVER_NAME')."/certificado/verificar/".$codigo;
+        $link=env('SERVER_NAME').env('ASSET_URL')."/certificado/verificar/".$codigo;
 
         $writer = new PngWriter();
         $qrCode = new QrCode($link);
@@ -67,6 +67,7 @@ class CertificadoController extends Controller
         if (file_exists($ruta)){
             $imagenBase64 = "data:image/png;base64," . base64_encode(file_get_contents($ruta));
         }
+
         $qr = $imagenBase64;
         return view('certificados.show',compact('certificado','qr'));
     }
@@ -76,6 +77,7 @@ class CertificadoController extends Controller
         if (file_exists($ruta)){
             $imagenBase64 = "data:image/png;base64," . base64_encode(file_get_contents($ruta));
         }
+        dd($ruta);
         $qr = $imagenBase64;
         return view('certificados.show',compact('certificado','qr'));
     }
