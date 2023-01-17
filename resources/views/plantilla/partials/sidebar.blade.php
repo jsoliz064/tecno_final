@@ -66,6 +66,14 @@
                         </a>
                     </li>
                 @endcan
+                @can('horarios.index')
+                    <li>
+                        <a href="{{route('horarios.index')}}">
+                            <i class="bi bi-person"></i>
+                            <span>Registrar Horarios</span>
+                        </a>
+                    </li>
+                @endcan
             </ul>
         </li>
 
@@ -77,6 +85,12 @@
             <a class="nav-link collapsed" href="users-profile.html">
                 <i class="bi bi-person"></i>
                 <span>Profile</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="{{route('asistencias.index')}}">
+                <i class="bi bi-person"></i>
+                <span>Asistencias</span>
             </a>
         </li>
 

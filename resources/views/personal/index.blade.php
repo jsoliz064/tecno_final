@@ -22,9 +22,9 @@
                                 <thead>
                                     <tr>
                                         <th>Nombre</th>
+                                        <th>CI</th>
                                         <th>Correo</th>
                                         <th>Telefono</th>
-                                        <th>Direccion</th>
                                         <th>Tipo</th>
                                         <th>Acciones</th>
                                     </tr>
@@ -33,9 +33,9 @@
                                     @foreach ($personal as $person)
                                         <tr>
                                             <td>{{ $person->nombre }} {{ $person->apellido }}</td>
+                                            <td>{{ $person->ci }}</td>
                                             <td>{{ $person->correo }}</td>
                                             <td>{{ $person->telefono }}</td>
-                                            <td>{{ $person->direccion }}</td>
                                             <td>{{ $person->TipoPersonal->nombre }}</td>
                                             <td>
                                                 <a href="{{ route('personal.edit', $person->id) }}"

@@ -29,6 +29,7 @@ class PersonalController extends Controller
         $request->validate([
             'nombre' => 'required',
             'apellido' => 'required',
+            'ci' => 'required',
             'genero' => 'required',
             'fecha_nacimiento' => 'required',
             'correo' => 'required',
@@ -42,6 +43,7 @@ class PersonalController extends Controller
         $personal = Personal::create([
             'nombre' => $request->nombre,
             'apellido' => $request->apellido,
+            'ci' => $request->ci,
             'genero' => $request->genero,
             'fecha_nacimiento' => $request->fecha_nacimiento,
             'correo' => $request->correo,
@@ -71,6 +73,7 @@ class PersonalController extends Controller
         $request->validate([
             'nombre' => 'required',
             'apellido' => 'required',
+            'ci' => 'required',
             'genero' => 'required',
             'fecha_nacimiento' => 'required',
             'correo' => 'required',
@@ -85,6 +88,7 @@ class PersonalController extends Controller
         $personal->update([
             'nombre' => $request->nombre,
             'apellido' => $request->apellido,
+            'ci' => $request->ci,
             'genero' => $request->genero,
             'fecha_nacimiento' => $request->fecha_nacimiento,
             'correo' => $request->correo,

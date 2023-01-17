@@ -7,6 +7,7 @@ use App\Models\Archivo;
 use App\Models\Personal;
 use Illuminate\Support\Facades\Storage;
 
+
 class ArchivoController extends Controller
 {
     public function index()

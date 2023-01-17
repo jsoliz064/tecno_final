@@ -15,9 +15,9 @@ class CreateHorariosTable extends Migration
     {
         Schema::create('p2_horarios', function (Blueprint $table) {
             $table->id();
-            $table->timestamp('hora_ingreso');
-            $table->timestamp('hora_salida');
-            $table->decimal('horas_mensuales',10,2)->default(0);
+            $table->time('hora_ingreso');
+            $table->time('hora_salida');
+            $table->integer('horas_mensuales')->default(0);
             $table->timestamps();
         });
     }

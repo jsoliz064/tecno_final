@@ -27,6 +27,11 @@
                                     value="{{ old('apellido', $personal->apellido) }}">
                             </div>
                             <div class="form-group">
+                                <label for="ci">Carnet de Identidad</label>
+                                <input type="text" name="ci" id="ci" class="form-control"
+                                    value="{{ old('ci', $personal->ci) }}">
+                            </div>
+                            <div class="form-group">
                                 <label for="genero">Genero</label>
                                 <select name="genero" id="genero" class="form-control">
                                     <option value="">Select Type</option>
