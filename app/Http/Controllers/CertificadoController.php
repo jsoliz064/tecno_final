@@ -75,9 +75,9 @@ class CertificadoController extends Controller
     }
     public function show(Certificado $certificado)
     {
-        $ruta = "public" . $certificado->qr_path;
+        $ruta = "../public" . $certificado->qr_path;
         $imagenBase64 = "";
-        if (file_exists("../../".$ruta)) {
+        if (file_exists($ruta)) {
             $imagenBase64 = "data:image/png;base64," . base64_encode(file_get_contents($ruta));
         }
         $qr = $imagenBase64;
