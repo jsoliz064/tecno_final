@@ -75,13 +75,13 @@ class CertificadoController extends Controller
     }
     public function show(Certificado $certificado)
     {
-        $ruta = "public".$certificado->qr_path;
+        $ruta = "../public".$certificado->qr_path;
         //$ruta=substr($ruta,9,strlen($ruta));
         $imagenBase64 = "";
-        if (Storage::exists($ruta)) {
-            dd("ga");
+        //if (Storage::exists($ruta)) {
+            //dd("ga");
             $imagenBase64 = "data:image/png;base64," . base64_encode(file_get_contents($ruta));
-        }
+        //}
         $qr = $imagenBase64;
         return view('certificados.show', compact('certificado', 'qr'));
     }
