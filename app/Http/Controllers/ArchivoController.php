@@ -103,6 +103,11 @@ class ArchivoController extends Controller
     }
     public function destroy(Archivo $archivo)
     {
+       
+        $ruta = "public".$archivo->link;
+        if (file_exists("../".$ruta)){
+            unlink("../".$ruta);
+        }
         $archivo->delete();
         return redirect()->route('archivos.index')->with('info', 'El archivo se elimino correctamente');
     }

@@ -15,10 +15,11 @@ class CreateCertificadosTable extends Migration
     {
         Schema::create('p2_certificados', function (Blueprint $table) {
             $table->id();
-            $table->date('fecha');
+            $table->string('codigo');
+            $table->date('fecha_inicio');
+            $table->date('fecha_fin');
             $table->string('qr_path')->nullable();
             $table->string('link')->nullable();
-            $table->string('tipo');
             
             $table->unsignedBigInteger('personal_id');
             $table->foreign('personal_id')->references('id')->on('p2_personal')->onDelete('cascade')->onUpdate('cascade');

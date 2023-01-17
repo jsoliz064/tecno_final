@@ -43,16 +43,19 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::resource('personal', PersonalController::class)->names('personal');
     Route::resource('horarios', HorarioController::class)->names('horarios');
     Route::resource('archivos', ArchivoController::class)->names('archivos');
+    Route::resource('certificados', CertificadoController::class)->names('certificados');
 
-    Route::group(['prefix'=> 'certificados'], function () {
-        Route::get('index',[CertificadoController::class,'index'])->name('certificados.index');
-    });
 });
 
 Route::group(['prefix'=> 'asistencias'], function () {
     Route::get('index',[AsistenciaController::class,'index'])->name('asistencias.index');
     Route::get('marcar/{id}',[AsistenciaController::class,'marcar'])->name('asistencias.marcar');
 });
+
+Route::get('certificado/verificar/{codigo}',[CertificadoController::class,'verificar'])->name('certificados.verificar');
+Route::get('certificado/download/{certificado}',[CertificadoController::class,'download'])->name('certificados.download');
+
+
 
 
 
