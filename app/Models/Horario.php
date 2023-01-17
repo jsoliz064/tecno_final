@@ -11,4 +11,5 @@ class Horario extends Model
 
     protected $table="p2_horarios";
     protected $guarded=['id'];
+   
 }
