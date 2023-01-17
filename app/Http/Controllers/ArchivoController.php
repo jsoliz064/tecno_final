@@ -7,6 +7,7 @@ use App\Models\Archivo;
 use App\Models\Personal;
 use Illuminate\Support\Facades\Storage;
 
+
 class ArchivoController extends Controller
 {
     public function index()
@@ -102,6 +103,11 @@ class ArchivoController extends Controller
     }
     public function destroy(Archivo $archivo)
     {
+       
+        $ruta = "public".$archivo->link;
+        if (file_exists("../".$ruta)){
+            unlink("../".$ruta);
+        }
         $archivo->delete();
         return redirect()->route('archivos.index')->with('info', 'El archivo se elimino correctamente');
     }

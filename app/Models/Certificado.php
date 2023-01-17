@@ -11,4 +11,8 @@ class Certificado extends Model
 
     protected $table="p2_certificados";
     protected $guarded=['id'];
+
+    public function Personal(){
+        return $this->belongsTo(Personal::class,'personal_id');
+    }
 }

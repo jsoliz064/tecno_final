@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateHorariosTable extends Migration
+class CreatePaginasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,10 @@ class CreateHorariosTable extends Migration
      */
     public function up()
     {
-        Schema::create('p2_horarios', function (Blueprint $table) {
+        Schema::create('p2_paginas', function (Blueprint $table) {
             $table->id();
-            $table->time('hora_ingreso');
-            $table->time('hora_salida');
-            $table->integer('horas_mensuales')->default(0);
-            $table->timestamps();
+            $table->string('path');
+            $table->integer('visitas')->default(0);
         });
     }
 
@@ -29,6 +27,6 @@ class CreateHorariosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('horarios');
+        Schema::dropIfExists('paginas');
     }
 }

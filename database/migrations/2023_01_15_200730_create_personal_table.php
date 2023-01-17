@@ -17,6 +17,7 @@ class CreatePersonalTable extends Migration
             $table->id();
             $table->string('nombre');
             $table->string('apellido');
+            $table->string('ci');
             $table->string('genero');
             $table->date('fecha_nacimiento');
             $table->string('correo');
@@ -25,6 +26,9 @@ class CreatePersonalTable extends Migration
             $table->string('estado_civil');
             $table->unsignedBigInteger('tipo_personal_id')->nullable();
             $table->foreign('tipo_personal_id')->references('id')->on('p2_tipo_personal')->onDelete('set null')->onUpdate('cascade');
+            $table->unsignedBigInteger('horario_id')->nullable();
+            $table->foreign('horario_id')->references('id')->on('p2_horarios')->onDelete('set null')->onUpdate('cascade');
+            
             
             $table->unsignedBigInteger('user_id')->nullable();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('set null')->onUpdate('cascade');
