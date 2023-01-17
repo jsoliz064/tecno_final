@@ -13,6 +13,8 @@ class Pagina extends Model
     public $timestamps = false;
 
     public function contador($path){
+        $path = preg_replace('/[0-9]/', '', $path);
+
         $pagina=Pagina::where('path',$path)->first();
         if ($pagina==null){
             $pagina=Pagina::create([
