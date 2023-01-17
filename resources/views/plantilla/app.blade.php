@@ -16,9 +16,8 @@
     <!-- Google Fonts -->
     <link href="https://fonts.gstatic.com" rel="preconnect">
     <link
-        href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+        href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Fredoka+One:300,300i,400,400i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
         rel="stylesheet">
-
     <!-- Vendor CSS Files -->
     <link href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
@@ -30,7 +29,7 @@
 
     <!-- Template Main CSS File -->
     {{-- <link href="{{ asset('css/styleBlack.css') }}" rel="stylesheet" id="dark"> --}}
-    <link href="{{ asset('css/style.css') }}" rel="stylesheet" id="stylesheet" type="text/css">
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet" id="stylesheet" type="text/css"> 
     @yield('css')
 </head>
 
@@ -93,20 +92,94 @@
     <script src="{{ asset('js/main.js') }}"></script>
     @yield('js')
 
-    <script>
-        document.getElementById('dark-mode-button').addEventListener('click', changeStylesheet);
-        let bool=true;
-        function changeStylesheet(stylesheetName) {
-        var stylesheet = document.getElementById("stylesheet");
-        if (bool){
-        stylesheet.href = "{{ asset('css/styleBlack.css') }}";
-        bool=false;
-        }else{
-            stylesheet.href = "{{ asset('css/style.css') }}";
-          bool=true;
+     <script>
+        document.getElementById('dark-mode').addEventListener('click', changeVariable);
+        document.getElementById('adulto-mode').addEventListener('click', adultoMode);
+        document.getElementById('joven-mode').addEventListener('click', jovenMode);
+        document.getElementById('nino-mode').addEventListener('click', ninomode);
+
+        function changeVariable() {
+        if (localStorage.boolean) {
+            localStorage.boolean = 1 ;
+            window.location.reload();
+        } else {
+            localStorage.boolean= 0;
+         }
+        
         }
+        function adultoMode() {
+        if (localStorage.boolean) {
+            localStorage.boolean = 2 ;
+            window.location.reload();
+        } else {
+            localStorage.boolean= 0;
+         }
+        
         }
-    </script>
+        function jovenMode() {
+        if (localStorage.boolean) {
+            localStorage.boolean = 3 ;
+            window.location.reload();
+        } else {
+            localStorage.boolean= 0;
+         }
+        
+        }
+        function ninomode() {
+        if (localStorage.boolean) {
+            localStorage.boolean = 4 ;
+            window.location.reload();
+        } else {
+            localStorage.boolean= 0;
+         }
+        
+        }
+
+        window.onload= cargarSty;
+        window.addEventListener('load',cargarSty);
+        function cargarSty(){
+            
+            if (localStorage.boolean==1){
+                var stylesheet = document.getElementById("stylesheet");
+                stylesheet.href = "{{ asset('css/styleBlack.css') }}";
+
+            } if (localStorage.boolean==2){
+                var stylesheet = document.getElementById("stylesheet");
+                stylesheet.href = "{{ asset('css/styleAdulto.css') }}";
+ 
+            }
+             if (localStorage.boolean==3){
+                var stylesheet = document.getElementById("stylesheet");
+                stylesheet.href =  "{{ asset('css/styleJoven.css') }}";
+ 
+            }
+             if (localStorage.boolean==4){
+                var stylesheet = document.getElementById("stylesheet");
+                console.log("llega");
+                stylesheet.href =  "{{ asset('css/styleNino.css') }}";
+                
+
+            }
+            else{
+                var stylesheet = document.getElementById("stylesheet");
+                stylesheet.href =   "{{ asset('css/style.css') }}";
+                
+            }
+        }
+    </script> 
+
+
+    {{-- <script>
+        document.getElementById('dark-mode').addEventListener('click', changeStylesheet);
+     function changeStylesheet() {
+     var head = document.getElementsByTagName("head")[0];
+     var link = document.createElement("link");
+     link.rel = "stylesheet";
+    link.type = "text/css";
+    link.href = "{{ asset('css/styleBlack.css') }}";
+    head.appendChild(link); 
+    }
+    </script> --}}
 </body>
 
 </html>

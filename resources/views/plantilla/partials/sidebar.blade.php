@@ -36,8 +36,13 @@
                 <span>Profile</span>
             </a>
         </li>
-
+        {{-- <a id="dark-mode" class="nav-link collapsed">
+             <i class="fa-solid fa-moon-over-sun"></i> </a> --}}
+        
+        <button id="adulto-mode" > Adulto </i></button> 
+        <button id="joven-mode" >Joven</i></button> 
+        <button id="nino-mode" >Niño</i></button> 
+        <button id="dark-mode" ><i class="bi bi-moon"></i></button> 
     </ul>
-
-    <button id="dark-mode-button" ><i class="fa-solid fa-moon"></i></button>
+    
 </aside>

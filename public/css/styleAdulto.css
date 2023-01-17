@@ -10,24 +10,24 @@
 --------------------------------------------------------------*/
 :root {
   scroll-behavior: smooth;
-  --pcl:#fff;
-  --scl: #F7F82F;
-  --bg: #333;
-  --light-bg:rgb(82, 82, 82);
-  --lighter-bg:rgb(112, 112, 112);
-  --dark-bg:#262626;
+  --pcl: #c2c5d3;
+  --scl: #202126;
+  --bg: #3f4f9a;
+  --light-bg:rgb(242, 241, 231);
+  --lighter-bg:#758bef;
+  --dark-bg:#A5C6D6;
   --light-color:#eee;
   --border:1px solid rgb(199, 199, 199);
-  --box-shadow:0px 0 20px rgba(240, 240, 118, 0.65);
-  --btn-info-color: rgb(62, 63, 115);
+  --box-shadow:0px 0 20px rgba(23, 23, 23, 0.478);
+  --btn-info-color: #7d89bf;
   --btn-del-color: rgb(133, 43, 51);
   --font1: "Open Sans", sans-serif;
-  --font2: "Open Sans", sans-serif;
+  --font2: Arial, Helvetica, sans-serif;
   --font3: "Poppins", sans-serif;
 }
 /*override boostrap*/
 .btn-primary {
- background-color: var(--light-bg);
+ background-color: var(--bg);
  border-color: var(--light-bg);
  color: var(--pcl);
 }
@@ -64,7 +64,7 @@ tbody .odd {
 
 tbody{
   color: var(--pcl);
-  font-family: var(--font1);
+  font-family: var(--font2);
 }
 
 .form-control{
@@ -94,11 +94,11 @@ tbody{
 body {
   font-family: var(--font1);
   background: var(--light-bg);
-  color: var(--pcl);
+  color: var(--scl);
 }
 
 a {
-  color: var(--pcl);
+  color: var(--scl);
   text-decoration: none;
 }
 
@@ -108,7 +108,9 @@ a:hover {
 }
 
 h1,
-h2,
+h2{
+  font-family: var(--font1);
+}
 h3,
 h4,
 h5,
@@ -142,7 +144,7 @@ h6 {
   font-size: 24px;
   margin-bottom: 0;
   font-weight: 600;
-  color: var(--pcl);
+  color: var(--scl);
 }
 
 /*--------------------------------------------------------------
@@ -467,8 +469,8 @@ h6 {
 }
 
 .logo span {
-  font-size: 26px;
-  font-weight: 700;
+  font-size: 25px;
+  font-weight: 500;
   color: var(--pcl);
   font-family: var(--font1);
 }
@@ -581,7 +583,7 @@ h6 {
 
 .header-nav .nav-profile span {
   font-size: 14px;
-  font-weight: 600;
+  font-weight: 500;
 }
 
 .header-nav .badge-number {
@@ -712,7 +714,7 @@ h6 {
   scrollbar-width: thin;
   scrollbar-color: var(--light-bg) transparent;
   box-shadow: var(--box-shadow);
-  background-color: var(--dark-bg);
+  background-color: var(--lighter-bg);
 }
 
 @media (max-width: 1199px) {
@@ -774,10 +776,10 @@ h6 {
 }
 
 .sidebar-nav .nav-heading {
-  font-size: 11px; /*size heading text sidebar*/
+  font-size: 10px; /*size heading text sidebar*/
   text-transform: uppercase;
   color: var(--scl);
-  font-weight: 600;
+  font-weight: 200;
   margin: 10px 0 5px 15px;
 }
 
@@ -785,8 +787,8 @@ h6 {
   display: flex;
   align-items: center;
   font-size: 15px; /*size heading text sidebar*/
-  font-weight: 600;
-  color: var(--pcl);
+  font-weight: 200;
+  color: var(--scl);
   transition: 0.3;
   background: var(--light-bg);
   padding: 10px 15px;
@@ -794,13 +796,13 @@ h6 {
 }
 
 .sidebar-nav .nav-link i {
-  font-size: 16px;
+  font-size: 20px;
   margin-right: 10px;
   color: var(--scl);
 }
 
 .sidebar-nav .nav-link.collapsed {
-  color: var(--pcl);
+  color: var(--scl);
   background: var(--light-bg);
 }
 
@@ -811,7 +813,7 @@ h6 {
 .sidebar-nav .nav-link:hover {
   /* color: var(--pcl); */
   box-shadow: var(--box-shadow);
-  background: var(--bg);
+  background: var(--dark-bg);
 }
 
 .sidebar-nav .nav-link:hover i {
@@ -838,7 +840,7 @@ h6 {
   align-items: center;
   font-size: 14px;
   font-weight: 600;
-  color: var(--pcl);
+  color: var(--scl);
   transition: 0.3;
   padding: 10px 0 10px 40px;
   transition: 0.3s;
@@ -853,11 +855,11 @@ h6 {
 
 .sidebar-nav .nav-content a:hover,
 .sidebar-nav .nav-content a.active {
-  color: var(--scl);
+  color: var(--bg);
 }
 
 .sidebar-nav .nav-content a.active i {
-  background-color: var(--light-bg);
+  background-color: var(--scl);
 }
 
 /*--------------------------------------------------------------
