@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+  
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
@@ -30,9 +31,18 @@
     <link href="{{ asset('vendor/simple-datatables/style.css') }}" rel="stylesheet">
 
     <!-- Template Main CSS File -->
-    {{-- <link href="{{ asset('css/styleBlack.css') }}" rel="stylesheet" id="dark"> --}}
-    <link href="{{ asset('css/style.css') }}" rel="stylesheet" id="stylesheet" type="text/css"> 
+     <link href="{{ asset('css/style.css') }}" rel="stylesheet" id="stylesheet"> 
     @yield('css')
+    <script>
+        let stylesheet = document.getElementById("stylesheet");
+        if(localStorage.filecss !== null ){
+            if(stylesheet.href!== localStorage.filecss){
+            stylesheet.href= localStorage.filecss;
+            }
+        }else{
+            stylesheet.href = "{{ asset('css/style.css') }}";
+        }
+    </script>
 </head>
 
 <body>
@@ -97,83 +107,92 @@
         document.getElementById('joven-mode').addEventListener('click', jovenMode);
         document.getElementById('nino-mode').addEventListener('click', ninomode);
         document.getElementById('normal-mode').addEventListener('click', normal);
+       
         function changeVariable() {
-        if (localStorage.boolean) {
-            localStorage.boolean = 1 ;
+            
+            localStorage.filecss= "{{ asset('css/styleBlack.css') }}" ;
             window.location.reload();
-        } else {
-            localStorage.boolean= 0;
-         }
-        
         }
         function normal() {
-        if (localStorage.boolean) {
-            localStorage.boolean = 0 ;
+            localStorage.filecss= "{{ asset('css/style.css') }}" ;
             window.location.reload();
-        } else {
-            localStorage.boolean= 0;
-         }
-        
         }
         function adultoMode() {
-        if (localStorage.boolean) {
-            localStorage.boolean = 2 ;
+            localStorage.filecss= "{{ asset('css/styleAdulto.css') }}" ;
             window.location.reload();
-        } else {
-            localStorage.boolean= 0;
-         }
-        
         }
         function jovenMode() {
-        if (localStorage.boolean) {
-            localStorage.boolean = 3 ;
+            localStorage.filecss= "{{ asset('css/styleJoven.css') }}" ;
             window.location.reload();
-        } else {
-            localStorage.boolean= 0;
-         }
-        
         }
         function ninomode() {
-        if (localStorage.boolean) {
-            localStorage.boolean = 4 ;
+            localStorage.filecss= "{{ asset('css/styleNino.css') }}" ;
             window.location.reload();
-        } else {
-            localStorage.boolean= 0;
-         }
+        }
+         //window.onload= cargarSty;
+         //window.addEventListener('load',cargarSty);
         
-        }
+        
 
-        window.onload= cargarSty;
-        window.addEventListener('load',cargarSty);
-        function cargarSty(){
+
+        // let filecss= "{{ asset('css/style.css') }}";
+        // var head = document.getElementsByTagName("head")[0];
+        //     var link = document.createElement("link");
+        //     link.rel = "stylesheet";
+        //     link.type = "text/css";
+        //     localStorage.boolBlack=0;
+        //     localStorage.boolNi=0;
+        //     localStorage.boolJo=0;
+        //     localStorage.boolAd=0;
+        // window.onload= cargarSty;
+        // window.addEventListener('load',cargarSty);
+        // function cargarSty(){
             
-            if (localStorage.boolean==1){
-                let stylesheet = document.getElementById("stylesheet");
-                stylesheet.href = "{{ asset('css/styleBlack.css') }}";
-                
-            } else if (localStorage.boolean==2){
-                let stylesheet = document.getElementById("stylesheet");
-                stylesheet.href = "{{ asset('css/styleAdulto.css') }}";
- 
-            }
-             else if (localStorage.boolean==3){
-                let stylesheet = document.getElementById("stylesheet");
-                stylesheet.href =  "{{ asset('css/styleJoven.css') }}";
- 
-            }
-             else if (localStorage.boolean==4){
-                let stylesheet = document.getElementById("stylesheet");
-                console.log("llega");
-                stylesheet.href =  "{{ asset('css/styleNino.css') }}";
-                
-
-            }
-            else if (localStorage.boolean==0){
-                let stylesheet = document.getElementById("stylesheet");
-                stylesheet.href =   "{{ asset('css/style.css') }}";
-                
-            }
-        }
+            
+        //     head.appendChild(link); 
+        //     if (localStorage.boolean==1 && localStorage.boolBlack==0){
+        //         //let stylesheet = document.getElementById("stylesheet");
+        //         console.log("llega");
+        //         link.href =  "{{ asset('css/styleBlack.css') }}";
+        //         localStorage.boolBlack=1;
+        //         localStorage.boolNi=0;
+        //          localStorage.boolJo=0;
+        //         localStorage.boolAd=0;
+        //     } else if (localStorage.boolean==2 && localStorage.boolAd==0){
+        //        // let stylesheet = document.getElementById("stylesheet");
+        //        link.href =  "{{ asset('css/styleAdulto.css') }}";
+        //        localStorage.boolBlack=0;
+        //         localStorage.boolNi=0;
+        //          localStorage.boolJo=0;
+        //         localStorage.boolAd=1;
+        //     }
+        //      else if (localStorage.boolean==3 && localStorage.boolJo==0){
+        //        // let stylesheet = document.getElementById("stylesheet");
+        //        link.href =   "{{ asset('css/styleJoven.css') }}";
+        //        localStorage.boolBlack=0;
+        //         localStorage.boolNi=0;
+        //          localStorage.boolJo=1;
+        //         localStorage.boolAd=0;
+        //     }
+        //      else if (localStorage.boolean==4 && localStorage.boolNi==0){
+        //         //let stylesheet = document.getElementById("stylesheet");
+        //         console.log("llega");
+        //         link.href =   "{{ asset('css/styleNino.css') }}";
+        //         localStorage.boolBlack=0;
+        //         localStorage.boolNi=1;
+        //          localStorage.boolJo=0;
+        //         localStorage.boolAd=0;
+        //     }
+        //     else if (localStorage.boolean==0 && link.href !== "{{ asset('css/style.css') }}"){
+        //        // let stylesheet = document.getElementById("stylesheet");
+        //        link.href =    "{{ asset('css/style.css') }}";
+        //        localStorage.boolBlack=0;
+        //         localStorage.boolNi=0;
+        //          localStorage.boolJo=0;
+        //         localStorage.boolAd=0;
+        //     }
+        //     head.appendChild(link); 
+        // }
     </script> 
 
 

@@ -94,6 +94,7 @@ tbody{
 body {
   font-family: var(--font1);
   background: var(--light-bg);
+  font-size: 22 px;
   color: var(--scl);
 }
 
