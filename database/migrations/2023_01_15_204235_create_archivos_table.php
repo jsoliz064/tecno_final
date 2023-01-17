@@ -17,7 +17,6 @@ class CreateArchivosTable extends Migration
             $table->id();
             $table->string('nombre');
             $table->string('descripcion')->nullable();
-            $table->date('fecha');
             $table->string('link')->nullable();
 
             $table->unsignedBigInteger('personal_id');

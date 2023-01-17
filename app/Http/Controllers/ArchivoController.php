@@ -22,11 +22,12 @@ class ArchivoController extends Controller
     }
     public function store(Request $request)
     {
+        date_default_timezone_set("America/La_Paz");
+
         $request->validate([
             'nombre' => 'required',
             'descripcion' => 'required',
             'archivo'=>'required|file',
-            'fecha' => 'required',
             'personal_id' => 'required',
         ]);
 
@@ -40,17 +41,16 @@ class ArchivoController extends Controller
                 Storage::disk('public')->makeDirectory($dir);
             }
             Storage::disk('public')->put($dir . $imageName, file_get_contents($image));
-            $url="/storage/documents/${imageName}";
+            $url="/storage/documents/".$imageName;
         }
 
         Archivo::create([
             'nombre' => $request->nombre,
             'descripcion' => $request->descripcion,
-            'ruta'=>$url,
-            'fecha' => $request->fecha,
+            'link'=>$url,
             'personal_id' => $request->personal_id,
         ]);
-        return redirect()->route('archivo.index')->with('info', 'El archivo se creo correctamente');
+        return redirect()->route('archivos.index')->with('info', 'El archivo se creo correctamente');
     }
     public function edit(Archivo $archivo)
     {
@@ -59,11 +59,11 @@ class ArchivoController extends Controller
     }
     public function update(Request $request, Archivo $archivo)
     {
+        date_default_timezone_set("America/La_Paz");
+
         $request->validate([
             'nombre' => 'required',
             'descripcion' => 'required',
-            //'ruta'=>'required',
-            'fecha' => 'required',
             'personal_id' => 'required',
         ]);
 
@@ -83,10 +83,10 @@ class ArchivoController extends Controller
                 Storage::disk('public')->makeDirectory($dir);
             }
             Storage::disk('public')->put($dir . $imageName, file_get_contents($image));
-            $url="/storage/documents/${imageName}";
+            $url="/storage/documents/".$imageName;
             
             $archivo->update([
-                'ruta' => $url,
+                'link' => $url,
             ]);
         }
 
@@ -95,15 +95,14 @@ class ArchivoController extends Controller
         $archivo->update([
             'nombre' => $request->nombre,
             'descripcion' => $request->descripcion,
-            'fecha' => $request->fecha,
             'personal_id' => $request->personal_id,
         ]);
 
-        return redirect()->route('archivo.index')->with('info', 'El archivo se actualizo correctamente');
+        return redirect()->route('archivos.index')->with('info', 'El archivo se actualizo correctamente');
     }
     public function destroy(Archivo $archivo)
     {
         $archivo->delete();
-        return redirect()->route('archivo.index')->with('info', 'El archivo se elimino correctamente');
+        return redirect()->route('archivos.index')->with('info', 'El archivo se elimino correctamente');
     }
 }

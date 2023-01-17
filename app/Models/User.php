@@ -51,11 +51,11 @@ class User extends Authenticatable
     }
     
     public function rol_id() {
-        $rol = DB::table('roles')
-        ->join('model_has_roles', 'role_id', '=', 'roles.id')
-        ->join('users', 'users.id', '=', 'model_has_roles.model_id')
+        $rol = DB::table('p2_roles')
+        ->join('p2_model_has_roles', 'role_id', '=', 'p2_roles.id')
+        ->join('users', 'users.id', '=', 'p2_model_has_roles.model_id')
         ->where('users.id', '=', $this->id)
-        ->select('roles.id')
+        ->select('p2_roles.id')
         ->get()
         ->first();
         return $rol->id;

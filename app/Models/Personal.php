@@ -11,4 +11,9 @@ class Personal extends Model
 
     protected $table="p2_personal";
     protected $guarded=['id'];
+
+    public function TipoPersonal()
+    {
+        return $this->belongsTo(TipoPersonal::class, 'tipo_personal_id');
+    }
 }
