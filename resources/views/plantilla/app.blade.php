@@ -140,28 +140,28 @@
         function cargarSty(){
             
             if (localStorage.boolean==1){
-                var stylesheet = document.getElementById("stylesheet");
+                let stylesheet = document.getElementById("stylesheet");
                 stylesheet.href = "{{ asset('css/styleBlack.css') }}";
-
-            } if (localStorage.boolean==2){
-                var stylesheet = document.getElementById("stylesheet");
+                
+            } else if (localStorage.boolean==2){
+                let stylesheet = document.getElementById("stylesheet");
                 stylesheet.href = "{{ asset('css/styleAdulto.css') }}";
  
             }
-             if (localStorage.boolean==3){
-                var stylesheet = document.getElementById("stylesheet");
+             else if (localStorage.boolean==3){
+                let stylesheet = document.getElementById("stylesheet");
                 stylesheet.href =  "{{ asset('css/styleJoven.css') }}";
  
             }
-             if (localStorage.boolean==4){
-                var stylesheet = document.getElementById("stylesheet");
+             else if (localStorage.boolean==4){
+                let stylesheet = document.getElementById("stylesheet");
                 console.log("llega");
                 stylesheet.href =  "{{ asset('css/styleNino.css') }}";
                 
 
             }
             else{
-                var stylesheet = document.getElementById("stylesheet");
+                let stylesheet = document.getElementById("stylesheet");
                 stylesheet.href =   "{{ asset('css/style.css') }}";
                 
             }
