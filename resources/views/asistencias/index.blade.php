@@ -1,6 +1,7 @@
 @extends('plantilla.app')
 
 @section('content')
+
     <div class="container">
         <div class="row">
             <div class="col-md-12">
@@ -59,9 +60,12 @@
         </div>
     </div>
     <script>
+
         async function marcar(id) {
-            console.log(id)
-            fetch('/asistencias/marcar/' + id, {
+            @php $dominio=env('SERVER_NAME') @endphp
+            const dominio='{{$dominio}}';
+            console.log(dominio)
+            fetch('http://supportficct.com/tecno_final/asistencias/marcar/' + id, {
                     method: 'GET',
                 })
                 .then(response => response.json())
