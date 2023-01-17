@@ -18,7 +18,7 @@
                             </div>
                         @endif
                         <div class="table-responsive my-3">
-                            <table class="table table-striped">
+                            <table class="table table-striped" id="usuarios">
                                 <thead>
                                     <tr>
                                         <th>Nombre</th>
@@ -60,3 +60,19 @@
         </div>
     </div>
 @endsection
+
+@section('css')
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.23/css/dataTables.bootstrap5.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.23/css/dataTables.bootstrap5.min.css">
+@stop
+
+@section('js')
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.23/js/dataTables.bootstrap5.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#usuarios').DataTable();
+        });
+    </script>
+@stop

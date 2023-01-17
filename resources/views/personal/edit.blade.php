@@ -69,7 +69,7 @@
                             <div class="form-group">
                                 <label for="tipo_personal_id">Tipo de Personal</label>
                                 <select name="tipo_personal_id" id="tipo_personal_id" class="form-control">
-                                    <option value="">Select Type</option>
+                                    <option value="">Seleccione una opción</option>
                                     @foreach ($tipos as $tipo)
                                         <option value="{{ $tipo->id }}"
                                             {{ old('tipo_personal_id', $personal->tipo_personal_id) == $tipo->id ? 'selected' : '' }}>
@@ -77,10 +77,23 @@
                                     @endforeach
                                 </select>
                             </div>
+
+                            <div class="form-group">
+                                <label for="horario_id">Horario (opcional)</label>
+                                <select name="horario_id" id="horario_id" class="form-control">
+                                    <option value="">Seleccione un horario</option>
+                                    @foreach ($horarios as $horario)
+                                        <option value="{{ $horario->id }}"
+                                            {{ old('horario_id',$personal->horario_id) == $horario->id ? 'selected' : '' }}>
+                                            Entrada: {{ $horario->hora_ingreso }}, Salida: {{ $horario->hora_salida }}, Horas Mensuales: {{ $horario->horas_mensuales}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+
                             <div class="form-group">
                                 <label for="user_id">Usuario (Opcional)</label>
                                 <select name="user_id" id="user_id" class="form-control">
-                                    <option value="">Select Type</option>
+                                    <option value="">Seleccione un usuario</option>
                                     @foreach ($users as $user)
                                         <option value="{{ $user->id }}"
                                             {{ old('user_id', $personal->user_id) == $user->id ? 'selected' : '' }}>
@@ -88,7 +101,7 @@
                                     @endforeach
                                 </select>
                             </div>
-                            <button type="submit" class="btn btn-primary">Update Personal</button>
+                            <button type="submit" class="btn btn-primary">Actualizar</button>
                         </form>
                     </div>
                 </div>

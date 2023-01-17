@@ -49,5 +49,10 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     });
 });
 
-Route::get('asistencias',[AsistenciaController::class,'index'])->name('asistencias.index');
+Route::group(['prefix'=> 'asistencias'], function () {
+    Route::get('index',[AsistenciaController::class,'index'])->name('asistencias.index');
+    Route::get('marcar/{id}',[AsistenciaController::class,'marcar'])->name('asistencias.marcar');
+});
+
+
 

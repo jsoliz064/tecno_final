@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Personal;
 use App\Models\TipoPersonal;
 use App\Models\User;
+use App\Models\Horario;
 
 
 class PersonalController extends Controller
@@ -20,8 +21,8 @@ class PersonalController extends Controller
     {
         $tipos = TipoPersonal::all();
         $users = User::whereNotIn('id',User::select('users.id')->join('p2_personal','p2_personal.user_id','users.id')->get())->get();
-
-        return view('personal.create', compact('tipos','users'));
+        $horarios=Horario::all();
+        return view('personal.create', compact('tipos','users','horarios'));
     }
 
     public function store(Request $request)
@@ -37,7 +38,6 @@ class PersonalController extends Controller
             'direccion' => 'required',
             'estado_civil' => 'required',
             'tipo_personal_id' => 'required',
-            //'user_id' => 'required',
         ]);
 
         $personal = Personal::create([
@@ -51,7 +51,9 @@ class PersonalController extends Controller
             'direccion' => $request->direccion,
             'estado_civil' => $request->estado_civil,
             'tipo_personal_id' => $request->tipo_personal_id,
+            'horario_id' => $request->horario_id,
             'user_id' => $request->user_id,
+            
         ]);
         return redirect()->route('personal.index')->with('success', 'Personal created successfully');
     }
@@ -64,8 +66,8 @@ class PersonalController extends Controller
         $user_id=$personal->user_id?$personal->user_id:0;
         $userOcupados=User::select('users.id')->join('p2_personal','p2_personal.user_id','users.id')->where('users.id','<>',$user_id)->get();
         $users = User::whereNotIn('id',$userOcupados)->get();
-
-        return view('personal.edit', compact('personal', 'tipos','users'));
+        $horarios=Horario::all();
+        return view('personal.edit', compact('personal','tipos','users','horarios'));
     }
 
     public function update(Request $request, $id)
@@ -81,7 +83,6 @@ class PersonalController extends Controller
             'direccion' => 'required',
             'estado_civil' => 'required',
             'tipo_personal_id' => 'required',
-            //'user_id' => 'required',
         ]);
 
         $personal = Personal::find($id);
@@ -96,6 +97,7 @@ class PersonalController extends Controller
             'direccion' => $request->direccion,
             'estado_civil' => $request->estado_civil,
             'tipo_personal_id' => $request->tipo_personal_id,
+            'horario_id' => $request->horario_id,
             'user_id' => $request->user_id,
         ]);
         return redirect()->route('personal.index')->with('success', 'Personal updated successfully');

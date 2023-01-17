@@ -64,6 +64,19 @@
                                 <input type="text" name="estado_civil" id="estado_civil" class="form-control"
                                     value="{{ old('estado_civil') }}">
                             </div>
+
+                            <div class="form-group">
+                                <label for="horario_id">Horario (opcional)</label>
+                                <select name="horario_id" id="horario_id" class="form-control">
+                                    <option value="">Seleccione un tipo</option>
+                                    @foreach ($horarios as $horario)
+                                        <option value="{{ $horario->id }}"
+                                            {{ old('horario_id') == $horario->id ? 'selected' : '' }}>
+                                            Entrada: {{ $horario->hora_ingreso }}, Salida: {{ $horario->hora_salida }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            
                             <div class="form-group">
                                 <label for="tipo_personal_id">Tipo de Personal</label>
                                 <select name="tipo_personal_id" id="tipo_personal_id" class="form-control">
