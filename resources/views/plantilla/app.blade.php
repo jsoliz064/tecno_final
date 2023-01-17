@@ -31,14 +31,8 @@
     <link href="{{ asset('vendor/simple-datatables/style.css') }}" rel="stylesheet">
 
     <!-- Template Main CSS File -->
-<<<<<<< HEAD
-    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
-    <!-- custom css file link  -->
-
-=======
     {{-- <link href="{{ asset('css/styleBlack.css') }}" rel="stylesheet" id="dark"> --}}
     <link href="{{ asset('css/style.css') }}" rel="stylesheet" id="stylesheet" type="text/css">
->>>>>>> b62051bc3e5de72c3a2daea5be4b431af54a4e1e
     @yield('css')
 </head>
 
@@ -79,30 +73,6 @@
                 <div class="themes-container">
 
 
-    <h3>switch theme</h3>
-
-    <div class="theme-toggler">
-        <span>light</span>
-        <span class="toggler"></span>
-        <span>dart</span>
-    </div>
-
-    <h3>pick a color</h3>
-
-    <div class="theme-colors">
-        <div class="color" style="background:#2980b9"></div>
-        <div class="color" style="background:#27ae60;"></div>
-        <div class="color" style="background:#ffa502;"></div>
-        <div class="color" style="background:#8e44ad;"></div>
-        <div class="color" style="background:#0fb9b1;"></div>
-        <div class="color" style="background:#ffd32a;"></div>
-        <div class="color" style="background:#ff0033;"></div>
-        <div class="color" style="background:#e84393;"></div>
-    </div>
-
-</div>
-
-
             </section>
 
         </main>
@@ -135,6 +105,20 @@
         var stylesheet = document.getElementById("stylesheet");
         if (bool){
         stylesheet.href = "{{ asset('css/styleBlack.css') }}";
+        bool=false;
+        }else{
+            stylesheet.href = "{{ asset('css/style.css') }}";
+          bool=true;
+        }
+        }
+    </script>
+    <script>
+        document.getElementById('adult-mode-button').addEventListener('click', changeStylesheet);
+        let bool=true;
+        function changeStylesheet(stylesheetName) {
+        var stylesheet = document.getElementById("stylesheet");
+        if (bool){
+        stylesheet.href = "{{ asset('css/styleadult.css') }}";
         bool=false;
         }else{
             stylesheet.href = "{{ asset('css/style.css') }}";

@@ -84,4 +84,5 @@
     </ul>
 
     <button id="dark-mode-button" ><i class="fa-solid fa-moon"></i></button>
+    <button id="adult-mode-button" ><i class="fa-solid fa-moon"></i></button>
 </aside>
