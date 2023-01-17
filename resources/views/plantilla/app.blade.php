@@ -96,10 +96,19 @@
         document.getElementById('adulto-mode').addEventListener('click', adultoMode);
         document.getElementById('joven-mode').addEventListener('click', jovenMode);
         document.getElementById('nino-mode').addEventListener('click', ninomode);
-
+        document.getElementById('normal-mode').addEventListener('click', normal);
         function changeVariable() {
         if (localStorage.boolean) {
             localStorage.boolean = 1 ;
+            window.location.reload();
+        } else {
+            localStorage.boolean= 0;
+         }
+        
+        }
+        function normal() {
+        if (localStorage.boolean) {
+            localStorage.boolean = 0 ;
             window.location.reload();
         } else {
             localStorage.boolean= 0;
@@ -159,7 +168,7 @@
                 
 
             }
-            else{
+            else if (localStorage.boolean==0){
                 let stylesheet = document.getElementById("stylesheet");
                 stylesheet.href =   "{{ asset('css/style.css') }}";
                 
