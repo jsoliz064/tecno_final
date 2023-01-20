@@ -61,7 +61,7 @@
     </div>
     <script>
         
-        const url="{{$url}}"
+        const url="http://supportficct.com/tecno_final"
         async function marcar(id) {
             console.log(url);
             fetch(url+'/asistencias/marcar/' + id, {
