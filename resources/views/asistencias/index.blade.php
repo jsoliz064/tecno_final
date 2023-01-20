@@ -61,7 +61,7 @@
         @php $url=env('APP_URL').env('SUBDOMAIN'); @endphp
     </div>
     <script>
-        const url=$url;
+        const url="{{$url}}";
         async function marcar(id) {
             fetch(url+'/asistencias/marcar/' + id, {
                     method: 'GET',
