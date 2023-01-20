@@ -15,6 +15,7 @@ class AsistenciaController extends Controller
         $hoy=$hoy->format('Y-m-d');
         $personal=Personal::where('horario_id','<>',null)->get();
         $url=env('APP_URL').env('APP_SUBDOMAIN_URL');
+        dd($url);
         return view('asistencias.index',compact('personal','hoy','url'));
     }
     public function marcar($id){
