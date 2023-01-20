@@ -13,6 +13,9 @@ use Barryvdh\DomPDF\Facade\Pdf;
 
 class CertificadoController extends Controller
 {
+    public $url="http://supportficct.com/tecno_final";
+    public $asseturl="http://supportficct.com/tecno_final/public";
+
     public function index()
     {
         $certificados = Certificado::all();
@@ -34,7 +37,7 @@ class CertificadoController extends Controller
 
         //Libreria: https://github.com/endroid/qr-code
         $codigo = uniqid();
-        $link = env('APP_URL') ."/". $codigo;
+        $link = $this->url."/certificado/verificar/". $codigo;
 
         $writer = new PngWriter();
         $qrCode = new QrCode($link);
@@ -65,7 +68,7 @@ class CertificadoController extends Controller
             $qr = "";
             return view('certificados.show', compact('certificado', 'qr'));
         }
-        $ruta =  env('APP_URL') . env('ASSET_URL') . $certificado->qr_path;
+        $ruta =  $this->asseturl . $certificado->qr_path;
         $imagenBase64 = "";
         //if (file_exists($ruta)) {
         $imagenBase64 = "data:image/png;base64," . base64_encode(file_get_contents($ruta));
@@ -76,7 +79,7 @@ class CertificadoController extends Controller
     }
     public function show(Certificado $certificado)
     {
-        $ruta =  env('APP_URL').env('ASSET_URL') .  $certificado->qr_path;
+        $ruta =  $this->asseturl  .  $certificado->qr_path;
         $imagenBase64 = "";
         //if (file_exists($ruta)) {
         $imagenBase64 = "data:image/png;base64," . base64_encode(file_get_contents($ruta));
@@ -87,7 +90,7 @@ class CertificadoController extends Controller
 
     public function download(Certificado $certificado)
     {
-        $ruta =  env('APP_URL') . env('ASSET_URL') . $certificado->qr_path;
+        $ruta = $this->asseturl  . $certificado->qr_path;
         $imagenBase64 = "";
         //if (file_exists($ruta)) {
         $imagenBase64 = "data:image/png;base64," . base64_encode(file_get_contents($ruta));
