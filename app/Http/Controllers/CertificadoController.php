@@ -10,6 +10,12 @@ use Illuminate\Support\Facades\Storage;
 use App\Models\Certificado;
 use App\Models\Personal;
 use Barryvdh\DomPDF\Facade\Pdf;
+use Endroid\QrCode\Builder\Builder;
+use Endroid\QrCode\Encoding\Encoding;
+use Endroid\QrCode\ErrorCorrectionLevel\ErrorCorrectionLevelHigh;
+use Endroid\QrCode\Label\Alignment\LabelAlignmentCenter;
+use Endroid\QrCode\Label\Font\NotoSans;
+use Endroid\QrCode\RoundBlockSizeMode\RoundBlockSizeModeMargin;
 
 class CertificadoController extends Controller
 {
@@ -46,7 +52,6 @@ class CertificadoController extends Controller
 
         $image = $result->getString();
         $imageName = "codigoqr" . $codigo . ".png";
-        //Storage::disk('public')->put($dir . $imageName, $image);
         $path = public_path() . '/qr/' . $imageName;
         $url = "/qr/" . $imageName;
         file_put_contents($path, $image);
