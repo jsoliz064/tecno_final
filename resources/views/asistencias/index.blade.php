@@ -58,11 +58,14 @@
                 </div>
             </div>
         </div>
-        @php $url=env('APP_URL') . env('APP_SUBDOMAIN'); @endphp
+        @php $app_url=env('APP_URL');$app_domain_url=env('APP_DOMAIN'); @endphp
     </div>
     <script>
-        const url="{{$url}}";
+        const app_url="{{$app_url}}";
+        const app_domain_url="{{$app_domain_url}}";
+        const url=app_url+app_domain_url
         async function marcar(id) {
+            console.log(app_url+app_domain_url);
             fetch(url+'/asistencias/marcar/' + id, {
                     method: 'GET',
                 })
