@@ -14,7 +14,8 @@ class AsistenciaController extends Controller
         $hoy=new Carbon();
         $hoy=$hoy->format('Y-m-d');
         $personal=Personal::where('horario_id','<>',null)->get();
-        return view('asistencias.index',compact('personal','hoy'));
+        $url=env('APP_URL').env('APP_SUBDOMAIN_URL');
+        return view('asistencias.index',compact('personal','hoy','url'));
     }
     public function marcar($id){
         $personal=Personal::find($id);

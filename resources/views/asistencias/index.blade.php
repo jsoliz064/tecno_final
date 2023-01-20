@@ -1,7 +1,6 @@
 @extends('plantilla.app')
 
 @section('content')
-@php $app_url=env('APP_URL');$app_domain_url=env('APP_DOMAIN'); @endphp
     <div class="container">
         <div class="row">
             <div class="col-md-12">
@@ -61,12 +60,11 @@
         
     </div>
     <script>
-        const app_url="{{$app_url}}";
-        const app_domain_url="{{$app_domain_url}}";
-        const url=app_url+app_domain_url
+        
+        const url="{{$url}}"
         async function marcar(id) {
-            console.log(app_url+app_domain_url);
-            fetch(app_domain_url+'/asistencias/marcar/' + id, {
+            console.log(url);
+            fetch(url+'/asistencias/marcar/' + id, {
                     method: 'GET',
                 })
                 .then(response => response.json())
