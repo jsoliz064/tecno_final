@@ -28,27 +28,23 @@ class ArchivoController extends Controller
         $request->validate([
             'nombre' => 'required',
             'descripcion' => 'required',
-            'archivo'=>'required|file',
+            'archivo' => 'required|file',
             'personal_id' => 'required',
         ]);
 
-        $file=$request->file('archivo');
-        $url=null;
+        $file = $request->file('archivo');
+        $url = null;
         if ($file) {
-            $dir = "documents/";
-            $image = $file;
-            $imageName = "archivo" . "-" . $request->name . uniqid() . "." . $file->extension();
-            if (!Storage::disk('public')->exists($dir)) {
-                Storage::disk('public')->makeDirectory($dir);
-            }
-            Storage::disk('public')->put($dir . $imageName, file_get_contents($image));
-            $url="/storage/documents/".$imageName;
+            $path = public_path() . '/documents/';
+            $imageName = "archivo" . uniqid() . "." . $file->extension();
+            $file->move($path, $imageName);
+            $url="documents/".$imageName;
         }
 
         Archivo::create([
             'nombre' => $request->nombre,
             'descripcion' => $request->descripcion,
-            'link'=>$url,
+            'link' => $url,
             'personal_id' => $request->personal_id,
         ]);
         return redirect()->route('archivos.index')->with('info', 'El archivo se creo correctamente');
@@ -68,30 +64,26 @@ class ArchivoController extends Controller
             'personal_id' => 'required',
         ]);
 
-        $file=$request->file('archivo');
+        $file = $request->file('archivo');
         if ($file) {
-            if ($archivo->ruta){
-                $ruta = "public".$archivo->ruta;
-                if (file_exists("../".$ruta)){
-                    unlink("../".$ruta);
+            if ($archivo->link){
+                $ruta = public_path($archivo->link);
+                if (file_exists($ruta)) {
+                    unlink($ruta);
                 }
             }
 
-            $dir = "documents/";
-            $image = $file;
-            $imageName = "archivo" . "-" . $request->name . uniqid() . "." . $file->extension();
-            if (!Storage::disk('public')->exists($dir)) {
-                Storage::disk('public')->makeDirectory($dir);
-            }
-            Storage::disk('public')->put($dir . $imageName, file_get_contents($image));
-            $url="/storage/documents/".$imageName;
-            
+            $path = public_path() . '/documents/';
+            $imageName = "archivo" . uniqid() . "." . $file->extension();
+            $file->move($path, $imageName);
+            $url="documents/".$imageName;
+
             $archivo->update([
                 'link' => $url,
             ]);
         }
 
-       
+
 
         $archivo->update([
             'nombre' => $request->nombre,
@@ -104,9 +96,11 @@ class ArchivoController extends Controller
     public function destroy(Archivo $archivo)
     {
        
-        $ruta = "public".$archivo->link;
-        if (file_exists("../".$ruta)){
-            unlink("../".$ruta);
+        if ($archivo->link){
+            $ruta = public_path($archivo->link);
+            if (file_exists($ruta)) {
+                unlink($ruta);
+            }
         }
         $archivo->delete();
         return redirect()->route('archivos.index')->with('info', 'El archivo se elimino correctamente');

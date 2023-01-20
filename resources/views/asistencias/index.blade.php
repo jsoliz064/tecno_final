@@ -58,11 +58,12 @@
                 </div>
             </div>
         </div>
+        @php $url=env('APP_URL'); @endphp
     </div>
     <script>
-
+        const url=$url;
         async function marcar(id) {
-            fetch('https://www.tecnoweb.org.bo/inf513/grupo06sa/p2_1/tecnofinal/asistencias/marcar/' + id, {
+            fetch(url+'/asistencias/marcar/' + id, {
                     method: 'GET',
                 })
                 .then(response => response.json())

@@ -34,18 +34,19 @@ class CertificadoController extends Controller
 
         //Libreria: https://github.com/endroid/qr-code
         $codigo = uniqid();
-        $link = env('SERVER_NAME') . env('ASSET_URL') . "/certificado/verificar/" . $codigo;
+        $link = env('APP_URL') ."/". $codigo;
 
         $writer = new PngWriter();
         $qrCode = new QrCode($link);
         $qrCode->setSize(250);
         $result = $writer->write($qrCode);
 
-        $dir = "qr/";
         $image = $result->getString();
         $imageName = "codigoqr" . $codigo . ".png";
-        Storage::disk('public')->put($dir . $imageName, $image);
-        $url = "/storage/" . $dir . $imageName;
+        //Storage::disk('public')->put($dir . $imageName, $image);
+        $path = public_path() . '/qr/' . $imageName;
+        $url = "qr/" . $imageName;
+        file_put_contents($path, $image);
 
         $certificado = Certificado::create([
             'fecha_inicio' => $request->fecha_inicio,
@@ -64,10 +65,10 @@ class CertificadoController extends Controller
             $qr = "";
             return view('certificados.show', compact('certificado', 'qr'));
         }
-        $ruta = "https://www.tecnoweb.org.bo/inf513/grupo06sa/p2_1/tecnofinal/public" . $certificado->qr_path;
+        $ruta =  env('APP_URL') ."/".  $certificado->qr_path;
         $imagenBase64 = "";
         //if (file_exists($ruta)) {
-            $imagenBase64 = "data:image/png;base64," . base64_encode(file_get_contents($ruta));
+        $imagenBase64 = "data:image/png;base64," . base64_encode(file_get_contents($ruta));
         //}
 
         $qr = $imagenBase64;
@@ -75,10 +76,10 @@ class CertificadoController extends Controller
     }
     public function show(Certificado $certificado)
     {
-        $ruta = "https://www.tecnoweb.org.bo/inf513/grupo06sa/p2_1/tecnofinal/public" . $certificado->qr_path;
+        $ruta =  env('APP_URL') ."/".  $certificado->qr_path;
         $imagenBase64 = "";
         //if (file_exists($ruta)) {
-            $imagenBase64 = "data:image/png;base64," . base64_encode(file_get_contents($ruta));
+        $imagenBase64 = "data:image/png;base64," . base64_encode(file_get_contents($ruta));
         //}
         $qr = $imagenBase64;
         return view('certificados.show', compact('certificado', 'qr'));
@@ -86,10 +87,10 @@ class CertificadoController extends Controller
 
     public function download(Certificado $certificado)
     {
-        $ruta = "https://www.tecnoweb.org.bo/inf513/grupo06sa/p2_1/tecnofinal/public" . $certificado->qr_path;
+        $ruta =  env('APP_URL') ."/".  $certificado->qr_path;
         $imagenBase64 = "";
         //if (file_exists($ruta)) {
-            $imagenBase64 = "data:image/png;base64," . base64_encode(file_get_contents($ruta));
+        $imagenBase64 = "data:image/png;base64," . base64_encode(file_get_contents($ruta));
         //}
         $qr = $imagenBase64;
         $pdf = Pdf::loadView('certificado', compact('certificado', 'qr'));
@@ -98,9 +99,11 @@ class CertificadoController extends Controller
 
     public function destroy(Certificado $certificado)
     {
-        $ruta = "public" . $certificado->qr_path;
-        if (file_exists("../" . $ruta)) {
-            unlink("../" . $ruta);
+        if ($certificado->qr_path) {
+            $ruta = public_path($certificado->qr_path);
+            if (file_exists($ruta)) {
+                unlink($ruta);
+            }
         }
         $certificado->delete();
         return redirect()->route('certificados.index')->with('success', 'Certificado eliminado exitosamente');
