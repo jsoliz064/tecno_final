@@ -1,7 +1,7 @@
 @extends('plantilla.app')
 
 @section('content')
-
+@php $app_url=env('APP_URL');$app_domain_url=env('APP_DOMAIN'); @endphp
     <div class="container">
         <div class="row">
             <div class="col-md-12">
@@ -58,7 +58,7 @@
                 </div>
             </div>
         </div>
-        @php $app_url=env('APP_URL');$app_domain_url=env('APP_DOMAIN'); @endphp
+        
     </div>
     <script>
         const app_url="{{$app_url}}";
