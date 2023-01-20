@@ -16,11 +16,16 @@ use Endroid\QrCode\ErrorCorrectionLevel\ErrorCorrectionLevelHigh;
 use Endroid\QrCode\Label\Alignment\LabelAlignmentCenter;
 use Endroid\QrCode\Label\Font\NotoSans;
 use Endroid\QrCode\RoundBlockSizeMode\RoundBlockSizeModeMargin;
+use Endroid\QrCode\Color\Color;
+use Endroid\QrCode\ErrorCorrectionLevel\ErrorCorrectionLevelLow;
+use Endroid\QrCode\Label\Label;
+use Endroid\QrCode\Logo\Logo;
+use Endroid\QrCode\Writer\ValidationException;
 
 class CertificadoController extends Controller
 {
-    public $url="http://supportficct.com/tecno_final";
-    public $asseturl="http://supportficct.com/tecno_final/public";
+    public $url = "http://supportficct.com/tecno_final";
+    public $asseturl = "http://supportficct.com/tecno_final/public";
 
     public function index()
     {
@@ -43,11 +48,17 @@ class CertificadoController extends Controller
 
         //Libreria: https://github.com/endroid/qr-code
         $codigo = uniqid();
-        $link = $this->url."/certificado/verificar/". $codigo;
+        $link = $this->url . "/certificado/verificar/" . $codigo;
 
+        $qrCode = QrCode::create($link)
+            ->setEncoding(new Encoding('UTF-8'))
+            ->setErrorCorrectionLevel(new ErrorCorrectionLevelLow())
+            ->setSize(250)
+            ->setMargin(10)
+            ->setRoundBlockSizeMode(new RoundBlockSizeModeMargin())
+            ->setForegroundColor(new Color(0, 0, 0))
+            ->setBackgroundColor(new Color(255, 255, 255));
         $writer = new PngWriter();
-        $qrCode = new QrCode($link);
-        $qrCode->setSize(250);
         $result = $writer->write($qrCode);
 
         $image = $result->getString();
