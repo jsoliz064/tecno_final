@@ -38,7 +38,7 @@ class ArchivoController extends Controller
             $path = public_path() . '/documents/';
             $imageName = "archivo" . uniqid() . "." . $file->extension();
             $file->move($path, $imageName);
-            $url="documents/".$imageName;
+            $url="/documents/".$imageName;
         }
 
         Archivo::create([
@@ -76,7 +76,7 @@ class ArchivoController extends Controller
             $path = public_path() . '/documents/';
             $imageName = "archivo" . uniqid() . "." . $file->extension();
             $file->move($path, $imageName);
-            $url="documents/".$imageName;
+            $url="/documents/".$imageName;
 
             $archivo->update([
                 'link' => $url,

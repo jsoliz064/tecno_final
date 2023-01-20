@@ -45,7 +45,7 @@ class CertificadoController extends Controller
         $imageName = "codigoqr" . $codigo . ".png";
         //Storage::disk('public')->put($dir . $imageName, $image);
         $path = public_path() . '/qr/' . $imageName;
-        $url = "qr/" . $imageName;
+        $url = "/qr/" . $imageName;
         file_put_contents($path, $image);
 
         $certificado = Certificado::create([
@@ -65,7 +65,7 @@ class CertificadoController extends Controller
             $qr = "";
             return view('certificados.show', compact('certificado', 'qr'));
         }
-        $ruta =  env('APP_URL') ."/".  $certificado->qr_path;
+        $ruta =  env('APP_URL') . env('ASSET_URL') . $certificado->qr_path;
         $imagenBase64 = "";
         //if (file_exists($ruta)) {
         $imagenBase64 = "data:image/png;base64," . base64_encode(file_get_contents($ruta));
@@ -76,7 +76,7 @@ class CertificadoController extends Controller
     }
     public function show(Certificado $certificado)
     {
-        $ruta =  env('APP_URL') ."/".  $certificado->qr_path;
+        $ruta =  env('APP_URL').env('ASSET_URL') .  $certificado->qr_path;
         $imagenBase64 = "";
         //if (file_exists($ruta)) {
         $imagenBase64 = "data:image/png;base64," . base64_encode(file_get_contents($ruta));
@@ -87,7 +87,7 @@ class CertificadoController extends Controller
 
     public function download(Certificado $certificado)
     {
-        $ruta =  env('APP_URL') ."/".  $certificado->qr_path;
+        $ruta =  env('APP_URL') . env('ASSET_URL') . $certificado->qr_path;
         $imagenBase64 = "";
         //if (file_exists($ruta)) {
         $imagenBase64 = "data:image/png;base64," . base64_encode(file_get_contents($ruta));

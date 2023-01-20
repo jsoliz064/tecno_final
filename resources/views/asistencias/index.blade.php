@@ -58,7 +58,7 @@
                 </div>
             </div>
         </div>
-        @php $url=env('APP_URL'); @endphp
+        @php $url=env('APP_URL').env('SUBDOMAIN'); @endphp
     </div>
     <script>
         const url=$url;
