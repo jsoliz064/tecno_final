@@ -33,16 +33,6 @@
     <!-- Template Main CSS File -->
      <link href="{{ asset('css/style.css') }}" rel="stylesheet" id="stylesheet"> 
     @yield('css')
-    <script>
-        let stylesheet = document.getElementById("stylesheet");
-        if(localStorage.filecss !== null ){
-            if(stylesheet.href!== localStorage.filecss){
-            stylesheet.href= localStorage.filecss;
-            }
-        }else{
-            stylesheet.href = "{{ asset('css/style.css') }}";
-        }
-    </script>
 </head>
 
 <body>

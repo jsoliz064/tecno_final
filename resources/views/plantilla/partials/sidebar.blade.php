@@ -90,14 +90,14 @@
         {{-- <a id="dark-mode" class="nav-link collapsed">
              <i class="fa-solid fa-moon-over-sun"></i> </a> --}}
         
-    <li class="nav-heading">
+    {{--  <li class="nav-heading">
         <button id="adulto-mode" > Adulto</button> 
         <button id="joven-mode" >Joven</button> 
         <button id="nino-mode" >Niño</button> 
         <button id="normal-mode" >Normal</button> 
         <button id="dark-mode" ><i class="bi bi-moon"> </i></button> 
         
-    </li>
+    </li>  --}}
     </ul>
     
 </aside>
