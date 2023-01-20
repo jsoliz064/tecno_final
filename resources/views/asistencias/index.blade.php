@@ -66,7 +66,7 @@
         const url=app_url+app_domain_url
         async function marcar(id) {
             console.log(app_url+app_domain_url);
-            fetch(url+'/asistencias/marcar/' + id, {
+            fetch(app_domain_url+'/asistencias/marcar/' + id, {
                     method: 'GET',
                 })
                 .then(response => response.json())
