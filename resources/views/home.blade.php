@@ -91,7 +91,7 @@
                 },
                 series: data,
                 xaxis: {
-                    categories: ["Retrasos del Personalxd"]
+                    categories: ["Retrasos del Personal"]
                 }
             };
             

@@ -19,8 +19,8 @@
                             <a href="{{ route('roles.create') }}" class="btn btn-primary float-right">Crear Rol</a>
                         @endcan
                     </div>
-                    <div class="card-body">
-                        <div class="table-responsive my-3">
+                    <div class="card-body py-3">
+                        <div class="table-responsive">
                             <table class="table" id="roles">
                                 <thead>
                                     <tr>
@@ -60,10 +60,9 @@
             </div>
         </div>
     </div>
-@endsection
+@stop
 
 @section('css')
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.23/css/dataTables.bootstrap5.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.23/css/dataTables.bootstrap5.min.css">
 @stop
 

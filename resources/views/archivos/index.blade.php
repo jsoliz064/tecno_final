@@ -11,8 +11,8 @@
         <a href="{{ route('archivos.create') }}"class="btn btn-primary btb-sm my-4"> Registrar Archivo</a>
     @endcan
     <div class="card">
-        <div class="card-body">
-            <div class="table-responsive my-3">
+        <div class="card-body py-3">
+            <div class="table-responsive">
                 <table class="table table-striped" id="usuarios">
 
                     <thead>
@@ -65,7 +65,6 @@
 @stop
 
 @section('css')
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.23/css/dataTables.bootstrap5.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.23/css/dataTables.bootstrap5.min.css">
 @stop
 

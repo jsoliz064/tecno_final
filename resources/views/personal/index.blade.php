@@ -11,13 +11,13 @@
                             <a href="{{ route('personal.create') }}" class="btn btn-primary float-right">Registrar Personal</a>
                         @endcan
                     </div>
-                    <div class="card-body">
+                    <div class="card-body py-3">
                         @if (session('success'))
                             <div class="alert alert-success">
                                 {{ session('success') }}
                             </div>
                         @endif
-                        <div class="table-responsive my-3">
+                        <div class="table-responsive">
                             <table class="table table-striped" id="usuarios">
                                 <thead>
                                     <tr>
@@ -59,7 +59,7 @@
             </div>
         </div>
     </div>
-@endsection
+@stop
 
 @section('css')
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.23/css/dataTables.bootstrap5.min.css">
