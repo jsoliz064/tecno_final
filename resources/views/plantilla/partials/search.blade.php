@@ -25,7 +25,7 @@
         $paginas = $pagina->all();
     @endphp
     <form class="search-form d-flex align-items-center">
-        <input id="search" type="text" name="query" placeholder="Search" title="Enter search keyword">
+        <input id="search" type="text" name="query" placeholder="Buscar" title="Enter search keyword">
         <button title="Search"><i class="bi bi-search"></i></button>
     </form>
     <div class="result" id="divresult">
