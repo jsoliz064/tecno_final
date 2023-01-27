@@ -25,7 +25,7 @@ use Endroid\QrCode\Writer\ValidationException;
 class CertificadoController extends Controller
 {
     public $url = "http://supportficct.com/tecno_final";
-    public $asseturl = "http://supportficct.com/tecno_final/public";
+    public $asseturl = "/public";
 
     public function index()
     {
