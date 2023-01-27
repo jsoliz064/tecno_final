@@ -25,7 +25,7 @@ use Endroid\QrCode\Writer\ValidationException;
 class CertificadoController extends Controller
 {
     public $url = "http://supportficct.com/tecno_final";
-    public $asseturl = "/public";
+    public $asseturl = "public";
 
     public function index()
     {
@@ -84,7 +84,7 @@ class CertificadoController extends Controller
             $qr = "";
             return view('certificados.show', compact('certificado', 'qr'));
         }
-        $ruta =  $this->asseturl . $certificado->qr_path;
+        $ruta =  public_path() . $certificado->qr_path;
         $imagenBase64 = "";
         //if (file_exists($ruta)) {
         $imagenBase64 = "data:image/png;base64," . base64_encode(file_get_contents($ruta));
@@ -95,7 +95,7 @@ class CertificadoController extends Controller
     }
     public function show(Certificado $certificado)
     {
-        $ruta =  $this->asseturl  .  $certificado->qr_path;
+        $ruta =  public_path()  .  $certificado->qr_path;
         $imagenBase64 = "";
         //if (file_exists($ruta)) {
         $imagenBase64 = "data:image/png;base64," . base64_encode(file_get_contents($ruta));
@@ -106,7 +106,7 @@ class CertificadoController extends Controller
 
     public function download(Certificado $certificado)
     {
-        $ruta = $this->asseturl  . $certificado->qr_path;
+        $ruta = public_path()  . $certificado->qr_path;
         $imagenBase64 = "";
         //if (file_exists($ruta)) {
         $imagenBase64 = "data:image/png;base64," . base64_encode(file_get_contents($ruta));
