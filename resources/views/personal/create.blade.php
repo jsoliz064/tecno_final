@@ -1,7 +1,7 @@
 @extends('plantilla.app')
 
 @section('content_header')
-    <a class="btn btn-secundary" href="{{route('personal.index')}}">Volver</a>
+    <a class="btn btn-dark" href="{{ route('personal.index') }}">Volver</a>
 @stop
 
 @section('content')
@@ -9,8 +9,8 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
-                    <div class="card-header">
-                        Registrar Personal
+                    <div class="card-header d-flex justify-content-center">
+                        <h4>Registrar Personal</h4>
                     </div>
                     <div class="card-body">
                         <form action="{{ route('personal.store') }}" method="POST">
@@ -19,22 +19,22 @@
                                 <label for="nombre">Nombre</label>
                                 <input type="text" name="nombre" id="nombre" class="form-control"
                                     value="{{ old('nombre') }}">
-                                    @error('personal')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
+                                @error('personal')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
 
                             </div>
                             <div class="form-group">
                                 <label for="apellido">Apellido</label>
                                 <input type="text" name="apellido" id="apellido" class="form-control"
                                     value="{{ old('apellido') }}">
-                                    @error('apellido')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
+                                @error('apellido')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                             <div class="form-group">
                                 <label for="ci">Carnet de Identidad</label>
@@ -49,26 +49,31 @@
                                     <option value="F" {{ old('genero') === 'F' ? 'selected' : '' }}>
                                         Femenino</option>
                                 </select>
+                                @error('genero')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                             <div class="form-group">
                                 <label for="fecha_nacimiento">Fecha de Nacimiento</label>
                                 <input type="date" name="fecha_nacimiento" id="fecha_nacimiento" class="form-control"
                                     value="{{ old('fecha_nacimiento') }}">
-                                    @error('fecha_nacimiento')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
+                                @error('fecha_nacimiento')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                             <div class="form-group">
                                 <label for="correo">Correo</label>
                                 <input type="email"name="correo" id="correo" class="form-control"
                                     value="{{ old('correo') }}">
-                                    @error('password')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
+                                @error('password')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                             <div class="form-group">
                                 <label for="telefono">Telefono</label>
@@ -82,8 +87,21 @@
                             </div>
                             <div class="form-group">
                                 <label for="estado_civil">Estado Civil</label>
-                                <input type="text" name="estado_civil" id="estado_civil" class="form-control"
-                                    value="{{ old('estado_civil') }}">
+                                <select name="estado_civil" id="estado_civil" class="form-control">
+                                    <option value="Soltero" {{ old('estado_civil') === 'Soltero' ? 'selected' : '' }}>
+                                        Soltero</option>
+                                    <option value="Casado" {{ old('estado_civil') === 'Casado' ? 'selected' : '' }}>
+                                        Casado</option>
+                                    <option value="Divorsiado" {{ old('estado_civil') === 'Divorsiado' ? 'selected' : '' }}>
+                                        Divorsiado</option>
+                                    <option value="Viudo" {{ old('estado_civil') === 'Viudo' ? 'selected' : '' }}>
+                                        Viudo</option>
+                                </select>
+                                @error('estado_civil')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
 
                             <div class="form-group">
@@ -93,7 +111,8 @@
                                     @foreach ($horarios as $horario)
                                         <option value="{{ $horario->id }}"
                                             {{ old('horario_id') == $horario->id ? 'selected' : '' }}>
-                                            Entrada: {{ $horario->hora_ingreso }}, Salida: {{ $horario->hora_salida }}</option>
+                                            Entrada: {{ $horario->hora_ingreso }}, Salida: {{ $horario->hora_salida }}
+                                        </option>
                                     @endforeach
                                 </select>
                             </div>
