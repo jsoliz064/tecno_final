@@ -38,16 +38,24 @@
                                             <td>{{ $person->telefono }}</td>
                                             <td>{{ $person->TipoPersonal->nombre }}</td>
                                             <td>
-                                                <a href="{{ route('personal.edit', $person->id) }}"
-                                                    class="btn btn-warning">Edit</a>
-                                                <form action="{{ route('personal.destroy', $person->id) }}" method="POST"
-                                                    class="d-inline">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger"
-                                                        onclick="return confirm('¿ESTA SEGURO DE  BORRAR?')"
-                                                        value="Borrar">Delete</button>
-                                                </form>
+                                                @can('personal.show')
+                                                    <a href="{{ route('personal.show', $person->id) }}"
+                                                        class="btn btn-primary">Ver</a>
+                                                @endcan
+                                                @can('personal.edit')
+                                                    <a href="{{ route('personal.edit', $person->id) }}"
+                                                        class="btn btn-warning">Edit</a>
+                                                @endcan
+                                                @can('personal.destroy')
+                                                    <form action="{{ route('personal.destroy', $person->id) }}" method="POST"
+                                                        class="d-inline">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit" class="btn btn-danger"
+                                                            onclick="return confirm('¿ESTA SEGURO DE  BORRAR?')"
+                                                            value="Borrar">Delete</button>
+                                                    </form>
+                                                @endcan
                                             </td>
                                         </tr>
                                     @endforeach

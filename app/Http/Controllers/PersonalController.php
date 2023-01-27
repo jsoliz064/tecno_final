@@ -25,6 +25,13 @@ class PersonalController extends Controller
         return view('personal.create', compact('tipos','users','horarios'));
     }
 
+    public function show(Personal $personal){
+        $horario=$personal->Horario;
+        $archivos=$personal->Archivos;
+        $certificados=$personal->Certificados;
+        return view('personal.show', compact('personal','horario','archivos','certificados'));
+    }
+
     public function store(Request $request)
     {
         $request->validate([

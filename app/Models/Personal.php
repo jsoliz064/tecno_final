@@ -26,6 +26,14 @@ class Personal extends Model
     {
         return  $this->belongsTo(User::class,'user_id' );
     }
+    public function Archivos()
+    {
+        return $this->hasMany(Archivo::class,'personal_id');
+    }
+    public function Certificados()
+    {
+        return $this->hasMany(Certificado::class,'personal_id');
+    }
     public function Asistencia(){
         date_default_timezone_set("America/La_Paz");
         $hoy=new Carbon();

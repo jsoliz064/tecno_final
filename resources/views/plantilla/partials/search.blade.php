@@ -32,7 +32,6 @@
 
     </div>
 
-
     <script>
         let paginas = @json($paginas);
         let divresult = document.getElementById('divresult');
