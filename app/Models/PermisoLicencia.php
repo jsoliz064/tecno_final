@@ -11,4 +11,19 @@ class PermisoLicencia extends Model
 
     protected $table="p2_permisos_licencias";
     protected $guarded=['id'];
+    protected $fillable = [
+        'fecha',
+        'documento',
+        'dias_habiles',
+        'fecha_inicio',
+        'fecha_fin',
+        'id_personal',
+        'id_tipo',
+    ];
+    public function Personal(){
+        return $this->belongsTo(Personal::class,'id_personal');
+    }
+    public function TipoPermisoLicencia(){
+        return $this->belongsTo(TipoPermisoLicencia::class,'id_tipo');
+    }
 }

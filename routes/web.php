@@ -9,8 +9,8 @@ use App\Http\Controllers\PersonalController;
 use App\Http\Controllers\CertificadoController;
 use App\Http\Controllers\HorarioController;
 use App\Http\Controllers\AsistenciaController;
-
-
+use App\Http\Controllers\PermisoLicenciaController;
+use App\Http\Controllers\TipoPermisoLicenciaController;
 
 
 
@@ -44,6 +44,8 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::resource('horarios', HorarioController::class)->names('horarios');
     Route::resource('archivos', ArchivoController::class)->names('archivos');
     Route::resource('certificados', CertificadoController::class)->names('certificados');
+    Route::resource('permisoLicencia', PermisoLicenciaController::class)->names('permisolicencia');
+    Route::resource('TipoPermisoLicencia', TipoPermisoLicenciaController::class)->names('tipopermisolicencia');
 
 });
 

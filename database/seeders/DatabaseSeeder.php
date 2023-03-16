@@ -19,6 +19,8 @@ class DatabaseSeeder extends Seeder
 
         $this->call(TipoPersonalSeeder::class);
 
+        $this->call(TipoPermisoLicenciaSeeder::class);
+
 
     }
 }

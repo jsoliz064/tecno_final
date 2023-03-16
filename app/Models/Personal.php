@@ -30,6 +30,11 @@ class Personal extends Model
     {
         return $this->hasMany(Archivo::class,'personal_id');
     }
+    public function PermisoLicencia()
+    {
+        return $this->hasMany(PermisoLicencia::class,'id_personal');
+    }
+
     public function Certificados()
     {
         return $this->hasMany(Certificado::class,'personal_id');

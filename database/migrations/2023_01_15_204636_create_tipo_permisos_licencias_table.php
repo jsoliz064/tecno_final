@@ -15,6 +15,8 @@ class CreateTipoPermisosLicenciasTable extends Migration
     {
         Schema::create('p2_tipo_permisos_licencias', function (Blueprint $table) {
             $table->id();
+            $table->string('nombre');
+            $table->string('tipo');
             $table->timestamps();
         });
     }
